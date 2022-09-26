@@ -21,7 +21,6 @@ public class Weapon {
     this.name = name;
     this.damage = damage;
     this.weight = weight;
-    //this.type = type;
   }
 
   public String getName() {
@@ -38,10 +37,6 @@ public class Weapon {
   public int getWeight() {
     return weight;
   }
-
-  //private WeaponType getType() {
-   // return type;
-  //}
 
   @Override
   public boolean equals(final Object o) {
