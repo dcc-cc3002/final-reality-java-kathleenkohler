@@ -16,16 +16,14 @@ import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A Black Mage is a type of player character that can cast black magic.
+ * A Black Mage is a type of mage that can cast black magic.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author ~Kathleen Kohler~
  * @version 2.0
  */
-public class BlackMage extends AbstractPlayerCharacter {
+public class BlackMage extends AbstractMage {
 
-  private int currentMp;
-  private final int maxMp;
 
   /**
    * Creates a new Black Mage.
@@ -42,10 +40,7 @@ public class BlackMage extends AbstractPlayerCharacter {
   protected BlackMage(final @NotNull String name, final int maxHp, final int defense,
       int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
       throws InvalidStatValueException {
-    super(name, maxHp, defense, turnsQueue);
-    Require.statValueAtLeast(0, maxMp, "Max MP");
-    this.maxMp = maxMp;
-    this.currentMp = maxMp;
+    super(name, maxHp, defense, maxMp, turnsQueue);
   }
 
   // region : ACCESSORS
