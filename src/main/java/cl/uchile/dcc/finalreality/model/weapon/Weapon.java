@@ -6,13 +6,13 @@ import java.util.Objects;
  * A class that holds all the information of a weapon.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author ~Kathleen Kohler~
  */
 public class Weapon {
 
-  private final String name;
-  private final int damage;
-  private final int weight;
+  protected final String name;
+  protected final int damage;
+  protected final int weight;
 
   /**
    * Creates a weapon with a name, a base damage, speed, and it's type.
