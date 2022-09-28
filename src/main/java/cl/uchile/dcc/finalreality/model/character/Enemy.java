@@ -36,6 +36,11 @@ public class Enemy extends AbstractCharacter {
   }
 
   @Override
+  public String toString() {
+    return "Enemy{weight=%d, maxHp=%d, defense=%d, name='%s'}".formatted(weight, maxHp, defense, name);
+  }
+
+  @Override
   public boolean equals(final Object o) {
     if (this == o) {
       return true;
