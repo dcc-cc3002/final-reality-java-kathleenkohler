@@ -5,9 +5,8 @@ import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A kind of weapon.
+ * A class that holds all the information of a sword (type of weapon).
  */
-
 public class Sword extends Weapon {
 
   public Sword(final @NotNull String name, final int damage, final int weight)

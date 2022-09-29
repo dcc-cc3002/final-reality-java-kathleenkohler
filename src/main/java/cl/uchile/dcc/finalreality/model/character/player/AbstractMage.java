@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 
 /**
- * A class that holds all the information of a mage in the game.
+ * An abstract class that holds all the information of a mage in the game.
  *
  * <p>All mage have a name, a maximum amount of <i>hit points</i>
  * (maxHp), a defense value, a maximum amount of <i>mana</i>

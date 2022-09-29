@@ -5,7 +5,7 @@ import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A kind of weapon.
+ * A class that holds all the information of a knife (type of weapon).
  */
 public class Knife extends Weapon {
 

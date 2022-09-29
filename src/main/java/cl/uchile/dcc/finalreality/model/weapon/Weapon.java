@@ -5,7 +5,7 @@ import cl.uchile.dcc.finalreality.exceptions.Require;
 import java.util.Objects;
 
 /**
- * A abstract class that holds all the information of a weapon.
+ * An abstract class that holds all the information of a weapon.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Kathleen Kohler~
@@ -28,10 +28,16 @@ public abstract class Weapon {
     this.weight = weight;
   }
 
+  /**
+   * Returns the name of the weapon.
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Returns weapon damage.
+   */
   public int getDamage() {
     return damage;
   }

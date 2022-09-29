@@ -4,7 +4,7 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 /**
- * A kind of weapon.
+ * A class that holds all the information of a bow (type of weapon).
  */
 
 public class Bow extends Weapon {

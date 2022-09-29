@@ -9,9 +9,14 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
+ * A class that holds an example of how queue turns works.
+ *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  */
 public class TimerExample {
+  /**
+   *A main that shows an example of how queue turns work.
+   */
 
   public static void main(String[] args)
       throws InterruptedException, InvalidStatValueException {
