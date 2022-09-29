@@ -16,7 +16,6 @@ import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -53,6 +52,10 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     super(name, maxHp, defense, turnsQueue);
   }
 
+  /**
+   * Sets a scheduled executor to make this character (thread) wait for {@code speed / 10}
+   * seconds before adding the character to the queue.
+   */
 
   public void waitTurn() {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
@@ -60,7 +63,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
               /* command = */ this::addToQueue,
               /* delay = */ this.getEquippedWeapon().getWeight() / 10,
               /* unit = */ TimeUnit.SECONDS);
-    }
+  }
 
   @Override
   public void equip(Weapon weapon) {

@@ -2,12 +2,11 @@ package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
-import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -33,13 +32,16 @@ public class Enemy extends AbstractCharacter {
   }
 
 
-
+  /**
+   * Sets a scheduled executor to make this character (thread) wait for {@code speed / 10}
+   * seconds before adding the character to the queue.
+   */
   public void waitTurn() {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
-      scheduledExecutor.schedule(
-              /* command = */ this::addToQueue,
-              /* delay = */ this.getWeight() / 10,
-              /* unit = */ TimeUnit.SECONDS);
+    scheduledExecutor.schedule(
+            /* command = */ this::addToQueue,
+            /* delay = */ this.getWeight() / 10,
+            /* unit = */ TimeUnit.SECONDS);
   }
 
 
@@ -52,8 +54,10 @@ public class Enemy extends AbstractCharacter {
 
   @Override
   public String toString() {
-    return "Enemy{weight=%d, maxHp=%d, defense=%d, name='%s'}".formatted(weight, maxHp, defense, name);
+    return "Enemy{weight=%d, maxHp=%d, defense=%d, name='%s'}"
+            .formatted(weight, maxHp, defense, name);
   }
+
 
   @Override
   public boolean equals(final Object o) {

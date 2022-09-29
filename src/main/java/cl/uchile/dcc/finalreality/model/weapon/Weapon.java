@@ -2,11 +2,10 @@ package cl.uchile.dcc.finalreality.model.weapon;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
-
 import java.util.Objects;
 
 /**
- * A class that holds all the information of a weapon.
+ * A abstract class that holds all the information of a weapon.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Kathleen Kohler~
@@ -20,7 +19,8 @@ public abstract class Weapon {
   /**
    * Creates a weapon with a name, a base damage, speed, and it's type.
    */
-  public Weapon(final String name, final int damage, final int weight) throws InvalidStatValueException {
+  public Weapon(final String name, final int damage, final int weight)
+          throws InvalidStatValueException {
     Require.statValueAtLeast(0, damage, "Damage");
     Require.statValueAtLeast(1, weight, "Weight");
     this.name = name;
@@ -45,9 +45,11 @@ public abstract class Weapon {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
+    if (this == o) {
+      return true;
+    }
 
-    if(!(o instanceof Weapon weapon)){
+    if (!(o instanceof Weapon weapon)) {
       return false;
     }
 
