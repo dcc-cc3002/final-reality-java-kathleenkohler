@@ -15,7 +15,6 @@ Broadly speaking for the combat the player has a group of characters to control 
 enemies controlled by the computer.
 
 ---
-
 A class was created for each type of weapon, and the existing "Weapon" class was transformed into an abstract class.
 Within each weapon class, the equals, hashCode, and toString functions were overwritten.
 
