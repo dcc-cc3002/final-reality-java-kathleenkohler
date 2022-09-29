@@ -20,9 +20,8 @@ import java.util.concurrent.BlockingQueue;
  * @author ~Kathleen Kohler~
  */
 public abstract class AbstractMage extends AbstractPlayerCharacter{
-
-    protected int currentMp;
-    protected final int maxMp;
+  protected int currentMp;
+  protected final int maxMp;
 
     /**
      * Creates a new character.

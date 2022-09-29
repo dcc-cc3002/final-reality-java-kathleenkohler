@@ -4,6 +4,10 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -27,6 +31,17 @@ public class Enemy extends AbstractCharacter {
     Require.statValueAtLeast(1, weight, "Weight");
     this.weight = weight;
   }
+
+
+
+  public void waitTurn() {
+    scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
+      scheduledExecutor.schedule(
+              /* command = */ this::addToQueue,
+              /* delay = */ this.getWeight() / 10,
+              /* unit = */ TimeUnit.SECONDS);
+  }
+
 
   /**
    * Returns the weight of this enemy.
