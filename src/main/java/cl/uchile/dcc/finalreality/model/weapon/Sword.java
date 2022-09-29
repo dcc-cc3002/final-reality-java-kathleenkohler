@@ -1,10 +1,13 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class Sword extends Weapon{
 
-    public Sword(final String name, final int damage, final int weight){
+    public Sword(final @NotNull String name, final int damage, final int weight)throws InvalidStatValueException {
         super(name, damage, weight);
     }
 

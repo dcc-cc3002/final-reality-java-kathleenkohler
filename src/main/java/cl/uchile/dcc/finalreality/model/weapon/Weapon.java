@@ -1,5 +1,8 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.exceptions.Require;
+
 import java.util.Objects;
 
 /**
@@ -8,7 +11,7 @@ import java.util.Objects;
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Kathleen Kohler~
  */
-public class Weapon {
+public abstract class Weapon {
 
   protected final String name;
   protected final int damage;
@@ -17,7 +20,9 @@ public class Weapon {
   /**
    * Creates a weapon with a name, a base damage, speed, and it's type.
    */
-  public Weapon(final String name, final int damage, final int weight) {
+  public Weapon(final String name, final int damage, final int weight) throws InvalidStatValueException {
+    Require.statValueAtLeast(0, damage, "Damage");
+    Require.statValueAtLeast(1, weight, "Weight");
     this.name = name;
     this.damage = damage;
     this.weight = weight;
@@ -39,27 +44,18 @@ public class Weapon {
   }
 
   @Override
-  public boolean equals(final Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof final Weapon weapon)) {
+  public boolean equals(Object o) {
+    if (this == o) return true;
+
+    if(!(o instanceof Weapon weapon)){
       return false;
     }
-    return hashCode() == weapon.hashCode()
-        && damage == weapon.damage
-        && weight == weapon.weight
-        && name.equals(weapon.name);
+
+    return damage == weapon.damage && weight == weapon.weight && Objects.equals(name, weapon.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(Weapon.class, name, damage, weight);
-  }
-
-  @Override
-  public String toString() {
-    return "Weapon{name='%s', damage=%d, weight=%d}"
-        .formatted(name, damage, weight);
+    return Objects.hash(name, damage, weight);
   }
 }
