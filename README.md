@@ -15,5 +15,13 @@ Broadly speaking for the combat the player has a group of characters to control 
 enemies controlled by the computer.
 
 ---
+A class was created for each type of weapon, and the existing "Weapon" class was transformed into an abstract class.
+Within each weapon class, the equals, hashCode, and toString functions were overwritten.
 
-**The rest of the documentation is left for the users of this template to complete**
+Implemented an abstract class for mages, called "AbstractMage", since those characters have "mana"
+and added "getCurrentMp", "setCurrentMp" and "getMaxMp" functions.
+
+In addition, the "waitTurn" function, which was implemented in the abstract class "AbstractCharacter", was separated.
+Dividing a part in the "AbstractPlayerCharacter" class and another in the "Enemy" class, in order to avoid the use of
+instanceof.
+

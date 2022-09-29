@@ -2,15 +2,18 @@ package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * A class that holds all the information of a single enemy of the game.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author ~Kathleen Kohler~
  */
 public class Enemy extends AbstractCharacter {
 
@@ -28,12 +31,33 @@ public class Enemy extends AbstractCharacter {
     this.weight = weight;
   }
 
+
+  /**
+   * Sets a scheduled executor to make this character (thread) wait for {@code speed / 10}
+   * seconds before adding the character to the queue.
+   */
+  public void waitTurn() {
+    scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
+    scheduledExecutor.schedule(
+            /* command = */ this::addToQueue,
+            /* delay = */ this.getWeight() / 10,
+            /* unit = */ TimeUnit.SECONDS);
+  }
+
+
   /**
    * Returns the weight of this enemy.
    */
   public int getWeight() {
     return weight;
   }
+
+  @Override
+  public String toString() {
+    return "Enemy{weight=%d, maxHp=%d, defense=%d, name='%s'}"
+            .formatted(weight, maxHp, defense, name);
+  }
+
 
   @Override
   public boolean equals(final Object o) {

@@ -1,36 +1,44 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.exceptions.Require;
 import java.util.Objects;
 
 /**
- * A class that holds all the information of a weapon.
+ * An abstract class that holds all the information of a weapon.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author ~Kathleen Kohler~
  */
-public class Weapon {
+public abstract class Weapon {
 
-  private final String name;
-  private final int damage;
-  private final int weight;
-  private final WeaponType type;
+  protected final String name;
+  protected final int damage;
+  protected final int weight;
 
   /**
    * Creates a weapon with a name, a base damage, speed, and it's type.
    */
-  public Weapon(final String name, final int damage, final int weight,
-      final WeaponType type) {
+  public Weapon(final String name, final int damage, final int weight)
+          throws InvalidStatValueException {
+    Require.statValueAtLeast(0, damage, "Damage");
+    Require.statValueAtLeast(1, weight, "Weight");
     this.name = name;
     this.damage = damage;
     this.weight = weight;
-    this.type = type;
   }
 
-  private String getName() {
+  /**
+   * Returns the name of the weapon.
+   */
+  public String getName() {
     return name;
   }
 
-  private int getDamage() {
+  /**
+   * Returns weapon damage.
+   */
+  public int getDamage() {
     return damage;
   }
 
@@ -41,33 +49,21 @@ public class Weapon {
     return weight;
   }
 
-  private WeaponType getType() {
-    return type;
-  }
-
   @Override
-  public boolean equals(final Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
-    if (!(o instanceof final Weapon weapon)) {
+
+    if (!(o instanceof Weapon weapon)) {
       return false;
     }
-    return hashCode() == weapon.hashCode()
-        && damage == weapon.damage
-        && weight == weapon.weight
-        && name.equals(weapon.name)
-        && type == weapon.type;
+
+    return damage == weapon.damage && weight == weapon.weight && Objects.equals(name, weapon.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(Weapon.class, name, damage, weight, type);
-  }
-
-  @Override
-  public String toString() {
-    return "Weapon{name='%s', damage=%d, weight=%d, type=%s}"
-        .formatted(name, damage, weight, type);
+    return Objects.hash(name, damage, weight);
   }
 }
