@@ -10,7 +10,7 @@ import java.util.Objects;
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Kathleen Kohler~
  */
-public abstract class Weapon {
+public abstract class Weapon implements EquipWeapon{
 
   protected final String name;
   protected final int damage;

@@ -13,6 +13,8 @@ import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+
+import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -70,5 +72,10 @@ public class BlackMage extends AbstractMage {
   public int hashCode() {
     return Objects.hash(BlackMage.class, name, maxHp, defense, maxMp);
   }
-  // endregion
+
+  @Override
+  public void equip(Weapon weapon) {
+    weapon.equipBlackMage(this);
+  }
+
 }
