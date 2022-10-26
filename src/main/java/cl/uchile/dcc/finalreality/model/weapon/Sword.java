@@ -25,7 +25,8 @@ public class Sword extends Weapon {
       return false;
     }
 
-    return hashCode() == sword.hashCode() && damage == sword.damage && weight == sword.weight && Objects.equals(name, sword.name);
+    return hashCode() == sword.hashCode() && damage == sword.damage
+          && weight == sword.weight && Objects.equals(name, sword.name);
   }
 
   @Override

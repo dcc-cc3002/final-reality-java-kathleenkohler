@@ -26,7 +26,8 @@ public class Staff extends Weapon {
       return false;
     }
 
-    return hashCode() == staff.hashCode() && damage == staff.damage && weight == staff.weight && Objects.equals(name, staff.name);
+    return hashCode() == staff.hashCode() && damage == staff.damage
+          && weight == staff.weight && Objects.equals(name, staff.name);
   }
 
   @Override

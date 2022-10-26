@@ -25,8 +25,10 @@ public class Bow extends Weapon {
       return false;
     }
 
-    return hashCode() == bow.hashCode() && damage == bow.damage && weight == bow.weight && Objects.equals(name, bow.name);
+    return hashCode() == bow.hashCode() && damage == bow.damage && weight == bow.weight
+          && Objects.equals(name, bow.name);
   }
+
   @Override
   public int hashCode() {
     return Objects.hash(Bow.class, getName(), getDamage(), getWeight());

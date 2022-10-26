@@ -25,7 +25,8 @@ public class Knife extends Weapon {
       return false;
     }
 
-    return hashCode() == knife.hashCode() && damage == knife.damage && weight == knife.weight && Objects.equals(name, knife.name);
+    return hashCode() == knife.hashCode() && damage == knife.damage && weight == knife.weight
+          && Objects.equals(name, knife.name);
   }
 
   @Override

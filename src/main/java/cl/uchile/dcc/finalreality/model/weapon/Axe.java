@@ -24,7 +24,8 @@ public class Axe extends Weapon {
       return false;
     }
 
-    return hashCode() == axe.hashCode() && damage == axe.damage && weight == axe.weight && Objects.equals(name, axe.name);
+    return hashCode() == axe.hashCode() && damage == axe.damage && weight == axe.weight
+          && Objects.equals(name, axe.name);
 
   }
 
