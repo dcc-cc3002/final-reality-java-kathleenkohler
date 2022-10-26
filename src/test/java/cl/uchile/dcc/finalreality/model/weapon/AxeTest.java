@@ -56,6 +56,6 @@ public class AxeTest {
   @Test
   public void testToString() {
     assertEquals("metodo ToString no funciona en clase axe",
-                "Axe{name='axe', damage=4, weight=7}", axe2.toString());
+            "Axe{name='axe', damage=4, weight=7}", axe2.toString());
   }
 }
