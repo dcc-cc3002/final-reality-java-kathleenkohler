@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 public abstract class AbstractPlayerCharacter extends AbstractCharacter implements
     PlayerCharacter {
 
-  private Weapon equippedWeapon = null;
+  public Weapon equippedWeapon = null;
 
   /**
    * Creates a new character.

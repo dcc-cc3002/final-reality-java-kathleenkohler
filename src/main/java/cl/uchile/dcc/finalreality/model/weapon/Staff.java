@@ -45,26 +45,33 @@ public class Staff extends Weapon implements EquipWeapon {
 
   @Override
   public void equipEngineer(Engineer engineer) {
+    return;
 
   }
 
   @Override
   public void equipKnight(Knight knight) {
+    return;
 
   }
 
   @Override
   public void equipThief(Thief thief) {
+    return;
 
   }
 
   @Override
   public void equipBlackMage(BlackMage blackmage) {
+    blackmage.equippedWeapon = this;
+    return;
 
   }
 
   @Override
   public void equipWhiteMage(WhiteMage whitemage) {
+    whitemage.equippedWeapon = this;
+    return;
 
   }
 }
