@@ -17,9 +17,16 @@ public class Bow extends Weapon {
 
   @Override
   public boolean equals(final Object o) {
-    return super.equals(o) && o instanceof Bow;
-  }
+    if (this == o) {
+      return true;
+    }
 
+    if (!(o instanceof final Bow bow)) {
+      return false;
+    }
+
+    return hashCode() == bow.hashCode() && damage == bow.damage && weight == bow.weight && Objects.equals(name, bow.name);
+  }
   @Override
   public int hashCode() {
     return Objects.hash(Bow.class, getName(), getDamage(), getWeight());

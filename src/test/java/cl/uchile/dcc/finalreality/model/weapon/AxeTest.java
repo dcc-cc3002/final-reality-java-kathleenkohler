@@ -45,6 +45,7 @@ public class AxeTest {
     assertTrue("falla equals con mismo objeto en axe", axe1.equals(axe1));
     assertFalse("falla equals con distintos objetos en axe", axe1.equals(axe3));
     assertFalse("falla equals con distintos tipos de arma en axe", axe2.equals(bow));
+    assertFalse("falla equals con distintos objetos en axe", axe1.equals(null));
   }
 
   @Test

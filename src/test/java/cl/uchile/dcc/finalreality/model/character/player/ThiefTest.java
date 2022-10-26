@@ -9,10 +9,7 @@ import org.junit.Test;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class ThiefTest {
 
@@ -34,17 +31,19 @@ public class ThiefTest {
     staff2 = new Staff("staff2", 4, 7);
   }
 
-  /*
-    @Test
-    public void waitTurn() {
-    }
-
-    @Test
-    public void equip() {
-    }
-  */
   @Test
-  public void getEquippedWeapon() {
+  public void waitTurn() throws InterruptedException {
+    thief1.equip(staff);
+    thief1.waitTurn();
+    Thread.sleep(3000);
+    assertEquals("falla sacar enemy de la queue", thief1, queue.poll());
+    assertNotEquals("saca algo de la cola cuando está vacía", thief1, queue.poll());
+    assertNull("devuelve algo distinto de null cuando queue está vacía", queue.poll());
+  }
+
+
+  @Test
+  public void getEquippedWeaponAndEquip() {
     //excepciones con armas que no pueden ser cargadas
     thief3.equip(staff);
     assertEquals("falla al cargar arma en clase thief", staff, thief3.getEquippedWeapon());

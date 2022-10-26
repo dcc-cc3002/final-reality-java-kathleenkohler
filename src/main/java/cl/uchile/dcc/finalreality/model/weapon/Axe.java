@@ -16,7 +16,16 @@ public class Axe extends Weapon {
 
   @Override
   public boolean equals(final Object o) {
-    return super.equals(o) && o instanceof Axe;
+    if (this == o) {
+      return true;
+    }
+
+    if (!(o instanceof final Axe axe)) {
+      return false;
+    }
+
+    return hashCode() == axe.hashCode() && damage == axe.damage && weight == axe.weight && Objects.equals(name, axe.name);
+
   }
 
   @Override

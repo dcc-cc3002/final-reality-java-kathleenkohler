@@ -49,21 +49,4 @@ public abstract class Weapon {
     return weight;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-
-    if (!(o instanceof Weapon weapon)) {
-      return false;
-    }
-
-    return damage == weapon.damage && weight == weapon.weight && Objects.equals(name, weapon.name);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, damage, weight);
-  }
 }

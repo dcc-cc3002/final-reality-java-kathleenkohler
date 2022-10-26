@@ -18,7 +18,15 @@ public class Staff extends Weapon {
 
   @Override
   public boolean equals(final Object o) {
-    return super.equals(o) && o instanceof Staff;
+    if (this == o) {
+      return true;
+    }
+
+    if (!(o instanceof final Staff staff)) {
+      return false;
+    }
+
+    return hashCode() == staff.hashCode() && damage == staff.damage && weight == staff.weight && Objects.equals(name, staff.name);
   }
 
   @Override

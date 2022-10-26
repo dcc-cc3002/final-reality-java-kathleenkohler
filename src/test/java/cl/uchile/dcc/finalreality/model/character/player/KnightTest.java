@@ -30,17 +30,18 @@ public class KnightTest {
     knife2 = new Knife("knife2", 4, 7);
   }
 
-  /*
-    @Test
-    public void waitTurn() {
-    }
-
-    @Test
-    public void equip() {
-    }
-  */
   @Test
-  public void getEquippedWeapon() {
+  public void waitTurn() throws InterruptedException {
+    knight1.equip(knife);
+    knight1.waitTurn();
+    Thread.sleep(3000);
+    assertEquals("falla sacar enemy de la queue", knight1, queue.poll());
+    assertNotEquals("saca algo de la cola cuando está vacía", knight1, queue.poll());
+    assertNull("devuelve algo distinto de null cuando queue está vacía", queue.poll());
+  }
+
+  @Test
+  public void getEquippedWeaponAndEquip() {
     //excepciones con armas que no pueden ser cargadas
     knight3.equip(knife);
     assertEquals("falla al cargar arma en clase knight", knife, knight3.getEquippedWeapon());

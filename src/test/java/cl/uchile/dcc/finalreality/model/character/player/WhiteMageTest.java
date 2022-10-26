@@ -51,19 +51,20 @@ public class WhiteMageTest {
     assertEquals("falla al obtener maxMp en clase wmage", 20, wmage1.getMaxMp());
     assertNotEquals("falla al obtener maxMp en clase wmage", wmage2.getMaxMp(), wmage3.getMaxMp());
   }
-/*
+
   @Test
-  public void waitTurn() {
+  public void waitTurn() throws InterruptedException {
+    wmage1.equip(sword);
+    wmage1.waitTurn();
+    Thread.sleep(3000);
+    assertEquals("falla sacar enemy de la queue", wmage1, queue.poll());
+    assertNotEquals("saca algo de la cola cuando está vacía", wmage1, queue.poll());
+    assertNull("devuelve algo distinto de null cuando queue está vacía", queue.poll());
   }
 
-  @Test
-  public void equip() {
-  }
-
- */
 
   @Test
-  public void getEquippedWeapon() {
+  public void getEquippedWeaponAndEquip() {
     wmage3.equip(sword);
     assertEquals("falla al cargar arma en clase wmage", sword, wmage3.getEquippedWeapon());
     wmage3.equip(sword2);

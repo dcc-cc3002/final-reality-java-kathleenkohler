@@ -9,10 +9,7 @@ import org.junit.Test;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class BlackMageTest {
   private BlackMage bmage1;
@@ -25,6 +22,7 @@ public class BlackMageTest {
 
   @Before
   public void setUp() throws Exception {
+    queue = new LinkedBlockingQueue<>();
     bmage1 = new BlackMage("bmage", 15, 10, 20, queue);
     bmage2 = new BlackMage("bmage", 15, 10, 20, queue);
     bmage3 = new BlackMage("bmagee", 10, 5, 18, queue);
@@ -53,20 +51,20 @@ public class BlackMageTest {
     assertEquals("falla al obtener maxMp en clase bmage", 20, bmage1.getMaxMp());
     assertNotEquals("falla al obtener maxMp en clase bmage", bmage2.getMaxMp(), bmage3.getMaxMp());
   }
-/*
+
   @Test
-  public void waitTurn() {
-  //tiene que tener arma
+  public void waitTurn() throws InterruptedException {
+    bmage1.equip(axe);
+    bmage1.waitTurn();
+    Thread.sleep(3000);
+    assertEquals("falla sacar enemy de la queue", bmage1, queue.poll());
+    assertNotEquals("saca algo de la cola cuando está vacía", bmage1, queue.poll());
+    assertNull("devuelve algo distinto de null cuando queue está vacía", queue.poll());
   }
 
-  @Test
-  public void equip() {
-  }
-
- */
 
   @Test
-  public void getEquippedWeapon() {
+  public void getEquippedWeaponAndEquip() {
     bmage3.equip(axe);
     assertEquals("falla al cargar arma en clase bmage", axe, bmage3.getEquippedWeapon());
     bmage3.equip(axe2);

@@ -17,7 +17,15 @@ public class Sword extends Weapon {
 
   @Override
   public boolean equals(final Object o) {
-    return super.equals(o) && o instanceof Sword;
+    if (this == o) {
+      return true;
+    }
+
+    if (!(o instanceof final Sword sword)) {
+      return false;
+    }
+
+    return hashCode() == sword.hashCode() && damage == sword.damage && weight == sword.weight && Objects.equals(name, sword.name);
   }
 
   @Override

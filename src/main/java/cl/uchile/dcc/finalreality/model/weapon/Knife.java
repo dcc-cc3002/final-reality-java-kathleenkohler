@@ -17,7 +17,15 @@ public class Knife extends Weapon {
 
   @Override
   public boolean equals(final Object o) {
-    return super.equals(o) && o instanceof Knife;
+    if (this == o) {
+      return true;
+    }
+
+    if (!(o instanceof final Knife knife)) {
+      return false;
+    }
+
+    return hashCode() == knife.hashCode() && damage == knife.damage && weight == knife.weight && Objects.equals(name, knife.name);
   }
 
   @Override

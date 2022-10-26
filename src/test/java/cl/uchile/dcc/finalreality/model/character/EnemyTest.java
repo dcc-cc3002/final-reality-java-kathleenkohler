@@ -19,11 +19,12 @@ public class EnemyTest {
   private Thief thief;
   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
 
-  //private ThrowingRunnable InvalidStatValueException;
+  //private ThrowingRunnable InvalidStatValueException = new InvalidStatValueException("a");
   //private long InvalidStatValueException ;
 
   @Before
   public void setUp() throws Exception {
+    queue = new LinkedBlockingQueue<>();
     enemy1 = new Enemy("enemy", 20, 15, 10, queue);
     enemy2 = new Enemy("enemy", 20, 15, 10, queue);
     enemy3 = new Enemy("enemyy", 25, 10, 15, queue);
@@ -70,12 +71,15 @@ public class EnemyTest {
     //assertEquals("a", enemy1.setCurrentHp(30), InvalidStatValueException);
   }
 
-  /*
+
   @Test
-  public void waitTurn() {
-        //equipar arma
+  public void waitTurn() throws InterruptedException {
+    enemy1.waitTurn();
+    Thread.sleep(3000);
+    assertEquals("falla sacar enemy de la queue", enemy1, queue.poll());
+    assertNotEquals("saca algo de la cola cuando está vacía", enemy1, queue.poll());
+    assertNull("devuelve algo distinto de null cuando queue está vacía", queue.poll());
   }
-*/
   @Test
   public void getWeight() {
     assertEquals("falla al obtener peso en clase enemy", 20, enemy1.getWeight());

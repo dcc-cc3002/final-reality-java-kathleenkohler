@@ -22,6 +22,7 @@ public class EngineerTest {
 
   @Before
   public void setUp() throws Exception {
+    queue = new LinkedBlockingQueue<>();
     engineer1 = new Engineer("engineer", 15, 10, queue);
     engineer2 = new Engineer("engineer", 15, 10, queue);
     engineer3 = new Engineer("engineerr", 10, 5, queue);
@@ -30,17 +31,19 @@ public class EngineerTest {
     bow2 = new Bow("bow2", 4, 7);
   }
 
-  /*
-    @Test
-    public void waitTurn() {
-    }
 
-    @Test
-    public void equip() {
-    }
-  */
   @Test
-  public void getEquippedWeapon() {
+  public void waitTurn() throws InterruptedException {
+    engineer1.equip(bow);
+    engineer1.waitTurn();
+    Thread.sleep(3000);
+    assertEquals("falla sacar enemy de la queue", engineer1, queue.poll());
+    assertNotEquals("saca algo de la cola cuando está vacía", engineer1, queue.poll());
+    assertNull("devuelve algo distinto de null cuando queue está vacía", queue.poll());
+  }
+
+  @Test
+  public void getEquippedWeaponAndEquip() {
     //excepciones con armas que no pueden ser cargadas
     engineer3.equip(bow);
     assertEquals("falla al cargar arma en clase engineer", bow, engineer3.getEquippedWeapon());
