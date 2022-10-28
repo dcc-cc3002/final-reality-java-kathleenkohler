@@ -89,8 +89,8 @@ public class AxeTest {
     BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
     Thief thief = new Thief("thief", 4, 7, queue);
     thief.equip(axe1);
-    assertNotEquals("se equipó arma que debió ser equipada", axe1, thief.getEquippedWeapon());
-    assertEquals("se equipó arma que debió ser equipada", null, thief.getEquippedWeapon());
+    assertNotEquals("se equipó arma que no debió ser equipada", axe1, thief.getEquippedWeapon());
+    assertEquals("se equipó arma que no debió ser equipada", null, thief.getEquippedWeapon());
   }
 
   @Test
@@ -98,8 +98,8 @@ public class AxeTest {
     BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
     BlackMage bmage = new BlackMage("bmage",  15, 10, 20, queue);
     bmage.equip(axe1);
-    assertNotEquals("se equipó arma que debió ser equipada", axe1, bmage.getEquippedWeapon());
-    assertEquals("se equipó arma que debió ser equipada", null, bmage.getEquippedWeapon());
+    assertNotEquals("se equipó arma que no debió ser equipada", axe1, bmage.getEquippedWeapon());
+    assertEquals("se equipó arma que no debió ser equipada", null, bmage.getEquippedWeapon());
   }
 
   @Test
@@ -107,7 +107,7 @@ public class AxeTest {
     BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
     WhiteMage wmage = new WhiteMage("wmage",  15, 10, 20, queue);
     wmage.equip(axe1);
-    assertNotEquals("se equipó arma que debió ser equipada", axe1, wmage.getEquippedWeapon());
-    assertEquals("se equipó arma que debió ser equipada", null, wmage.getEquippedWeapon());
+    assertNotEquals("se equipó arma que no debió ser equipada", axe1, wmage.getEquippedWeapon());
+    assertEquals("se equipó arma que no debió ser equipada", null, wmage.getEquippedWeapon());
   }
 }
