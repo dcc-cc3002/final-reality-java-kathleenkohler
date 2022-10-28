@@ -10,10 +10,9 @@ package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-
-import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -69,7 +68,7 @@ public class Thief extends AbstractPlayerCharacter {
   }
 
   @Override
-  public void equip(Weapon weapon){
+  public void equip(Weapon weapon) {
     weapon.equipThief(this);
   }
 }
