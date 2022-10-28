@@ -3,6 +3,7 @@ package cl.uchile.dcc.finalreality.model.character.player;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Knife;
+import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +19,7 @@ public class KnightTest {
   private WhiteMage wmage;
   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
   private Knife knife;
-  private Knife knife2;
+  private Staff staff;
 
   @Before
   public void setUp() throws Exception {
@@ -27,7 +28,7 @@ public class KnightTest {
     knight3 = new Knight("knightt", 10, 5, queue);
     wmage = new WhiteMage("wmage", 15, 10, 20, queue);
     knife = new Knife("knife", 4, 7);
-    knife2 = new Knife("knife2", 4, 7);
+    staff = new Staff("staff", 4, 7);
   }
 
   @Test
@@ -45,15 +46,10 @@ public class KnightTest {
     //excepciones con armas que no pueden ser cargadas
     knight3.equip(knife);
     assertEquals("falla al cargar arma en clase knight", knife, knight3.getEquippedWeapon());
-    knight3.equip(knife2);
-    assertEquals("falla al cambiar arma cargada en clase knight", knife2, knight3.getEquippedWeapon());
+    knight3.equip(staff);
+    assertNotEquals("falla al cambiar arma cargada en clase knight", staff, knight3.getEquippedWeapon());
   }
 
-  /*
-      @Test
-      public void addToQueue() {
-      }
-  */
   @Test
   public void getName() {
     assertEquals("falla al obtener nombre en clase knight", "knight", knight1.getName());

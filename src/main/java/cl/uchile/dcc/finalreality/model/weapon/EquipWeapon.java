@@ -7,7 +7,7 @@ import cl.uchile.dcc.finalreality.model.character.player.Thief;
 import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 
 /**
-* This represents equipping a weopon.
+* This represents equipping a weopon to a character.
  */
 public interface EquipWeapon {
   /**

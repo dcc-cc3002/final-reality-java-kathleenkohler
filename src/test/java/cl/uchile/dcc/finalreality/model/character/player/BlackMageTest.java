@@ -2,7 +2,8 @@ package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.weapon.Axe;
+import cl.uchile.dcc.finalreality.model.weapon.Staff;
+import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,8 +18,8 @@ public class BlackMageTest {
   private BlackMage bmage3;
   private Engineer engineer;
   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
-  private Axe axe;
-  private Axe axe2;
+  private Staff staff;
+  private Sword sword;
 
   @Before
   public void setUp() throws Exception {
@@ -27,8 +28,8 @@ public class BlackMageTest {
     bmage2 = new BlackMage("bmage", 15, 10, 20, queue);
     bmage3 = new BlackMage("bmagee", 10, 5, 18, queue);
     engineer = new Engineer("engineer", 15, 10, queue);
-    axe = new Axe("axe", 4, 7);
-    axe2 = new Axe("axe2", 4, 7);
+    staff = new Staff("staff", 4, 7);
+    sword = new Sword("sword", 4, 7);
   }
 
   @Test
@@ -54,7 +55,7 @@ public class BlackMageTest {
 
   @Test
   public void waitTurn() throws InterruptedException {
-    bmage1.equip(axe);
+    bmage1.equip(staff);
     bmage1.waitTurn();
     Thread.sleep(3000);
     assertEquals("falla sacar enemy de la queue", bmage1, queue.poll());
@@ -65,18 +66,11 @@ public class BlackMageTest {
 
   @Test
   public void getEquippedWeaponAndEquip() {
-    bmage3.equip(axe);
-    assertEquals("falla al cargar arma en clase bmage", axe, bmage3.getEquippedWeapon());
-    bmage3.equip(axe2);
-    assertEquals("falla al cambiar arma cargada en clase bmage", axe2, bmage3.getEquippedWeapon());
+    bmage3.equip(staff);
+    assertEquals("falla al cargar arma en clase bmage", staff, bmage3.getEquippedWeapon());
+    bmage3.equip(sword);
+    assertNotEquals("falla al cambiar arma cargada en clase bmage", sword, bmage3.getEquippedWeapon());
   }
-/*
-  @Test
-  public void addToQueue() {
-  //excepcion
-  }
-
- */
 
   @Test
   public void getName() {
@@ -117,7 +111,7 @@ public class BlackMageTest {
     assertTrue("falla equals con objetos iguales en bmage", bmage1.equals(bmage2));
     assertFalse("falla equals con distintos objetos en bmage", bmage1.equals(bmage3));
     assertFalse("falla equals con distintos tipos de personajes en bmage", bmage2.equals(engineer));
-    assertFalse("falla equals con distintos tipos de personajes en bmage", bmage2.equals(axe));
+    assertFalse("falla equals con distintos tipos de personajes en bmage", bmage2.equals(sword));
   }
 
   @Test

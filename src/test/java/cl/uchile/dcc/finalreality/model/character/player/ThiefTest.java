@@ -2,7 +2,8 @@ package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.weapon.Staff;
+import cl.uchile.dcc.finalreality.model.weapon.Axe;
+import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,8 +19,8 @@ public class ThiefTest {
   private Thief thief3;
   private WhiteMage wmage;
   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
-  private Staff staff;
-  private Staff staff2;
+  private Sword sword;
+  private Axe axe;
 
   @Before
   public void setUp() throws Exception {
@@ -27,13 +28,13 @@ public class ThiefTest {
     thief2 = new Thief("thief", 15, 10, queue);
     thief3 = new Thief("thieff", 10, 5, queue);
     wmage = new WhiteMage("wmage", 15, 10, 20, queue);
-    staff = new Staff("staff", 4, 7);
-    staff2 = new Staff("staff2", 4, 7);
+    sword = new Sword("staff", 4, 7);
+    axe = new Axe("staff2", 4, 7);
   }
 
   @Test
   public void waitTurn() throws InterruptedException {
-    thief1.equip(staff);
+    thief1.equip(sword);
     thief1.waitTurn();
     Thread.sleep(3000);
     assertEquals("falla sacar enemy de la queue", thief1, queue.poll());
@@ -45,17 +46,12 @@ public class ThiefTest {
   @Test
   public void getEquippedWeaponAndEquip() {
     //excepciones con armas que no pueden ser cargadas
-    thief3.equip(staff);
-    assertEquals("falla al cargar arma en clase thief", staff, thief3.getEquippedWeapon());
-    thief3.equip(staff2);
-    assertEquals("falla al cambiar arma cargada en clase thief", staff2, thief3.getEquippedWeapon());
+    thief3.equip(sword);
+    assertEquals("falla al cargar arma en clase thief", sword, thief3.getEquippedWeapon());
+    thief3.equip(axe);
+    assertNotEquals("falla al cambiar arma cargada en clase thief", axe, thief3.getEquippedWeapon());
   }
 
-  /*
-      @Test
-      public void addToQueue() {
-      }
-  */
   @Test
   public void getName() {
     assertEquals("falla al obtener nombre en clase thief", "thief", thief1.getName());
