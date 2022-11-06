@@ -45,17 +45,11 @@ public class Knife extends Weapon implements EquipWeapon {
                 .formatted(super.getName(), super.getDamage(), super.getWeight());
   }
 
-  @Override
-  public void equipEngineer(Engineer engineer) {
-    return;
-
-  }
 
   @Override
   public void equipKnight(Knight knight) {
     knight.equippedWeapon = this;
     return;
-
   }
 
   @Override
@@ -68,12 +62,6 @@ public class Knife extends Weapon implements EquipWeapon {
   public void equipBlackMage(BlackMage blackmage) {
     blackmage.equippedWeapon = this;
     return;
-
   }
 
-  @Override
-  public void equipWhiteMage(WhiteMage whitemage) {
-    return;
-
-  }
 }

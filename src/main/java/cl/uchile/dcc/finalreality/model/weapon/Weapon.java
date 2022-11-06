@@ -1,7 +1,10 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.finalreality.model.character.player.*;
+
 import java.util.Objects;
 
 /**
@@ -47,6 +50,33 @@ public abstract class Weapon implements EquipWeapon {
    */
   public int getWeight() {
     return weight;
+  }
+
+  //todos como error
+
+  @Override
+  public void equipEngineer(Engineer engineer) throws InvalidEquippedWeapon {
+    throw new InvalidEquippedWeapon();
+  }
+
+  @Override
+  public void equipKnight(Knight knight) throws InvalidEquippedWeapon {
+    throw new InvalidEquippedWeapon();
+  }
+
+  @Override
+  public void equipThief(Thief thief) throws InvalidEquippedWeapon {
+    throw new InvalidEquippedWeapon();
+  }
+
+  @Override
+  public void equipBlackMage(BlackMage blackmage) throws InvalidEquippedWeapon {
+    throw new InvalidEquippedWeapon();
+  }
+
+  @Override
+  public void equipWhiteMage(WhiteMage whitemage) throws InvalidEquippedWeapon {
+    throw new InvalidEquippedWeapon();
   }
 
 }

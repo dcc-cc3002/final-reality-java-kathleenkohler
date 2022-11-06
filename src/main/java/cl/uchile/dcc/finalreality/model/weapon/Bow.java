@@ -49,32 +49,13 @@ public class Bow extends Weapon implements EquipWeapon {
   public void equipEngineer(Engineer engineer) {
     engineer.equippedWeapon = this;
     return;
-
   }
 
-  @Override
-  public void equipKnight(Knight knight) {
-    return;
-
-  }
 
   @Override
   public void equipThief(Thief thief) {
     thief.equippedWeapon = this;
     return;
-
-  }
-
-  @Override
-  public void equipBlackMage(BlackMage blackmage) {
-    return;
-
-  }
-
-  @Override
-  public void equipWhiteMage(WhiteMage whitemage) {
-    return;
-
   }
 }
 

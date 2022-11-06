@@ -1,9 +1,10 @@
 package cl.uchile.dcc.finalreality.model.character.player;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Staff;
-import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class BlackMageTest {
   private Engineer engineer;
   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
   private Staff staff;
-  private Sword sword;
+  private Knife knife;
 
   @Before
   public void setUp() throws Exception {
@@ -29,7 +30,7 @@ public class BlackMageTest {
     bmage3 = new BlackMage("bmagee", 10, 5, 18, queue);
     engineer = new Engineer("engineer", 15, 10, queue);
     staff = new Staff("staff", 4, 7);
-    sword = new Sword("sword", 4, 7);
+    knife = new Knife("knife", 4, 7);
   }
 
   @Test
@@ -54,7 +55,7 @@ public class BlackMageTest {
   }
 
   @Test
-  public void waitTurn() throws InterruptedException {
+  public void waitTurn() throws InterruptedException, InvalidEquippedWeapon {
     bmage1.equip(staff);
     bmage1.waitTurn();
     Thread.sleep(3000);
@@ -65,11 +66,11 @@ public class BlackMageTest {
 
 
   @Test
-  public void getEquippedWeaponAndEquip() {
+  public void getEquippedWeaponAndEquip() throws InvalidEquippedWeapon {
     bmage3.equip(staff);
     assertEquals("falla al cargar arma en clase bmage", staff, bmage3.getEquippedWeapon());
-    bmage3.equip(sword);
-    assertNotEquals("falla al cambiar arma cargada en clase bmage", sword, bmage3.getEquippedWeapon());
+    bmage3.equip(knife);
+    assertEquals("falla al cambiar arma cargada en clase bmage", knife, bmage3.getEquippedWeapon());
   }
 
   @Test
@@ -111,7 +112,7 @@ public class BlackMageTest {
     assertTrue("falla equals con objetos iguales en bmage", bmage1.equals(bmage2));
     assertFalse("falla equals con distintos objetos en bmage", bmage1.equals(bmage3));
     assertFalse("falla equals con distintos tipos de personajes en bmage", bmage2.equals(engineer));
-    assertFalse("falla equals con distintos tipos de personajes en bmage", bmage2.equals(sword));
+    assertFalse("falla equals con distintos tipos de personajes en bmage", bmage2.equals(knife));
   }
 
   @Test

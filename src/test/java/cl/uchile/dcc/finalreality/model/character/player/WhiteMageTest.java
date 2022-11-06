@@ -1,9 +1,9 @@
 package cl.uchile.dcc.finalreality.model.character.player;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Staff;
-import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,8 +19,8 @@ public class WhiteMageTest {
   private WhiteMage wmage3;
   private Thief thief;
   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
-  private Sword sword;
   private Staff staff;
+  private Staff staff2;
 
   @Before
   public void setUp() throws Exception {
@@ -28,7 +28,7 @@ public class WhiteMageTest {
     wmage2 = new WhiteMage("wmage", 15, 10, 20, queue);
     wmage3 = new WhiteMage("wmagee", 10, 5, 18, queue);
     thief = new Thief("thief", 15, 10, queue);
-    sword = new Sword("sword", 4, 7);
+    staff2 = new Staff("staff2", 4, 7);
     staff = new Staff("staff", 4, 7);
   }
 
@@ -54,7 +54,7 @@ public class WhiteMageTest {
   }
 
   @Test
-  public void waitTurn() throws InterruptedException {
+  public void waitTurn() throws InterruptedException, InvalidEquippedWeapon {
     wmage1.equip(staff);
     wmage1.waitTurn();
     Thread.sleep(3000);
@@ -65,11 +65,11 @@ public class WhiteMageTest {
 
 
   @Test
-  public void getEquippedWeaponAndEquip() {
+  public void getEquippedWeaponAndEquip() throws InvalidEquippedWeapon {
     wmage3.equip(staff);
     assertEquals("falla al cargar arma en clase wmage", staff, wmage3.getEquippedWeapon());
-    wmage3.equip(sword);
-    assertNotEquals("falla al cambiar arma cargada en clase wmage", sword, wmage3.getEquippedWeapon());
+    wmage3.equip(staff2);
+    assertEquals("falla al cambiar arma cargada en clase wmage", staff2, wmage3.getEquippedWeapon());
   }
 
   @Test

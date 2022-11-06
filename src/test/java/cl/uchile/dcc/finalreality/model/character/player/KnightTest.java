@@ -1,9 +1,10 @@
 package cl.uchile.dcc.finalreality.model.character.player;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Axe;
 import cl.uchile.dcc.finalreality.model.weapon.Knife;
-import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class KnightTest {
   private WhiteMage wmage;
   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
   private Knife knife;
-  private Staff staff;
+  private Axe axe;
 
   @Before
   public void setUp() throws Exception {
@@ -28,11 +29,11 @@ public class KnightTest {
     knight3 = new Knight("knightt", 10, 5, queue);
     wmage = new WhiteMage("wmage", 15, 10, 20, queue);
     knife = new Knife("knife", 4, 7);
-    staff = new Staff("staff", 4, 7);
+    axe = new Axe("axe", 4, 7);
   }
 
   @Test
-  public void waitTurn() throws InterruptedException {
+  public void waitTurn() throws InterruptedException, InvalidEquippedWeapon {
     knight1.equip(knife);
     knight1.waitTurn();
     Thread.sleep(3000);
@@ -42,12 +43,11 @@ public class KnightTest {
   }
 
   @Test
-  public void getEquippedWeaponAndEquip() {
-    //excepciones con armas que no pueden ser cargadas
+  public void getEquippedWeaponAndEquip() throws InvalidEquippedWeapon {
     knight3.equip(knife);
     assertEquals("falla al cargar arma en clase knight", knife, knight3.getEquippedWeapon());
-    knight3.equip(staff);
-    assertNotEquals("falla al cambiar arma cargada en clase knight", staff, knight3.getEquippedWeapon());
+    knight3.equip(axe);
+    assertEquals("falla al cambiar arma cargada en clase knight", axe, knight3.getEquippedWeapon());
   }
 
   @Test

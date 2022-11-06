@@ -8,6 +8,7 @@
 
 package cl.uchile.dcc.finalreality.model.character.player;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
@@ -64,7 +65,7 @@ public class Knight extends AbstractPlayerCharacter {
   }
 
   @Override
-  public void equip(Weapon weapon) {
+  public void equip(Weapon weapon) throws InvalidEquippedWeapon {
     weapon.equipKnight(this);
   }
 }

@@ -1,8 +1,9 @@
 package cl.uchile.dcc.finalreality.model.character.player;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.weapon.Axe;
+import cl.uchile.dcc.finalreality.model.weapon.Bow;
 import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +21,7 @@ public class ThiefTest {
   private WhiteMage wmage;
   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
   private Sword sword;
-  private Axe axe;
+  private Bow bow;
 
   @Before
   public void setUp() throws Exception {
@@ -28,12 +29,12 @@ public class ThiefTest {
     thief2 = new Thief("thief", 15, 10, queue);
     thief3 = new Thief("thieff", 10, 5, queue);
     wmage = new WhiteMage("wmage", 15, 10, 20, queue);
-    sword = new Sword("staff", 4, 7);
-    axe = new Axe("staff2", 4, 7);
+    sword = new Sword("sword", 4, 7);
+    bow = new Bow("bow", 4, 7);
   }
 
   @Test
-  public void waitTurn() throws InterruptedException {
+  public void waitTurn() throws InterruptedException, InvalidEquippedWeapon {
     thief1.equip(sword);
     thief1.waitTurn();
     Thread.sleep(3000);
@@ -44,12 +45,11 @@ public class ThiefTest {
 
 
   @Test
-  public void getEquippedWeaponAndEquip() {
-    //excepciones con armas que no pueden ser cargadas
+  public void getEquippedWeaponAndEquip() throws InvalidEquippedWeapon {
     thief3.equip(sword);
     assertEquals("falla al cargar arma en clase thief", sword, thief3.getEquippedWeapon());
-    thief3.equip(axe);
-    assertNotEquals("falla al cambiar arma cargada en clase thief", axe, thief3.getEquippedWeapon());
+    thief3.equip(bow);
+    assertEquals("falla al cambiar arma cargada en clase thief", bow, thief3.getEquippedWeapon());
   }
 
   @Test

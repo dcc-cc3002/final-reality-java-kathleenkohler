@@ -1,7 +1,9 @@
 package cl.uchile.dcc.finalreality.model.character.player;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Axe;
 import cl.uchile.dcc.finalreality.model.weapon.Bow;
 import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import org.junit.Before;
@@ -19,7 +21,7 @@ public class EngineerTest {
   private BlackMage bmage;
   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
   private Bow bow;
-  private Sword sword;
+  private Axe axe;
 
   @Before
   public void setUp() throws Exception {
@@ -29,12 +31,12 @@ public class EngineerTest {
     engineer3 = new Engineer("engineerr", 10, 5, queue);
     bmage = new BlackMage("bmage", 15, 10, 20, queue);
     bow = new Bow("bow", 4, 7);
-    sword = new Sword("sword", 4, 7);
+    axe = new Axe("axe", 4, 7);
   }
 
 
   @Test
-  public void waitTurn() throws InterruptedException {
+  public void waitTurn() throws InterruptedException, InvalidEquippedWeapon {
     engineer1.equip(bow);
     engineer1.waitTurn();
     Thread.sleep(3000);
@@ -44,11 +46,11 @@ public class EngineerTest {
   }
 
   @Test
-  public void getEquippedWeaponAndEquip() {
+  public void getEquippedWeaponAndEquip() throws InvalidEquippedWeapon {
     engineer3.equip(bow);
     assertEquals("falla al cargar arma en clase engineer", bow, engineer3.getEquippedWeapon());
-    engineer3.equip(sword);
-    assertNotEquals("falla al cambiar arma cargada en clase engineer", sword, engineer3.getEquippedWeapon());
+    engineer3.equip(axe);
+    assertEquals("falla al cambiar arma cargada en clase engineer", axe, engineer3.getEquippedWeapon());
   }
 
   @Test

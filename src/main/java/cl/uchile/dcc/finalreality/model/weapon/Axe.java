@@ -49,32 +49,13 @@ public class Axe extends Weapon implements EquipWeapon {
   public void equipEngineer(Engineer engineer) {
     engineer.equippedWeapon = this;
     return;
-
   }
 
   @Override
   public void equipKnight(Knight knight) {
     knight.equippedWeapon = this;
     return;
-
   }
 
-  @Override
-  public void equipThief(Thief thief) {
-    return;
-
-  }
-
-  @Override
-  public void equipBlackMage(BlackMage blackmage) {
-    return;
-
-  }
-
-  @Override
-  public void equipWhiteMage(WhiteMage whitemage) {
-    return;
-
-  }
 }
 
