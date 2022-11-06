@@ -5,15 +5,13 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.player.*;
 
-import java.util.Objects;
-
 /**
  * An abstract class that holds all the information of a weapon.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Kathleen Kohler~
  */
-public abstract class Weapon implements EquipWeapon {
+public abstract class Weapon implements GameWeapon {
 
   protected final String name;
   protected final int damage;
@@ -31,28 +29,20 @@ public abstract class Weapon implements EquipWeapon {
     this.weight = weight;
   }
 
-  /**
-   * Returns the name of the weapon.
-   */
+  @Override
   public String getName() {
     return name;
   }
 
-  /**
-   * Returns weapon damage.
-   */
+  @Override
   public int getDamage() {
     return damage;
   }
 
-  /**
-   * Returns the weight of the weapon.
-   */
+  @Override
   public int getWeight() {
     return weight;
   }
-
-  //todos como error
 
   @Override
   public void equipEngineer(Engineer engineer) throws InvalidEquippedWeapon {

@@ -1,5 +1,6 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.*;
@@ -66,7 +67,7 @@ public class BowTest {
     }
 
     @Test
-    public void testEquipEngineer() throws InvalidStatValueException {
+    public void testEquipEngineer() throws InvalidStatValueException, InvalidEquippedWeapon {
         BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
         Engineer engineer = new Engineer("engineer", 4, 7, queue);
         engineer.equip(bow1);
@@ -75,38 +76,11 @@ public class BowTest {
     }
 
     @Test
-    public void testEquipKnight() throws InvalidStatValueException {
-        BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
-        Knight knight = new Knight("knight", 4, 7, queue);
-        knight.equip(bow1);
-        assertNotEquals("se equipó arma que no debió ser equipada", bow1, knight.getEquippedWeapon());
-        assertEquals("se equipó arma que no debió ser equipada", null, knight.getEquippedWeapon());
-    }
-
-    @Test
-    public void testEquipThief() throws InvalidStatValueException {
+    public void testEquipThief() throws InvalidStatValueException, InvalidEquippedWeapon {
         BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
         Thief thief = new Thief("thief", 4, 7, queue);
         thief.equip(bow1);
         assertEquals("no se equipó arma que debió ser equipada", bow1, thief.getEquippedWeapon());
         assertNotEquals(" no se equipó arma que debió ser equipada", null, thief.getEquippedWeapon());
-    }
-
-    @Test
-    public void testEquipBlackMage() throws InvalidStatValueException {
-        BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
-        BlackMage bmage = new BlackMage("bmage",  15, 10, 20, queue);
-        bmage.equip(bow1);
-        assertNotEquals("se equipó arma que no debió ser equipada", bow1, bmage.getEquippedWeapon());
-        assertEquals("se equipó arma que no debió ser equipada", null, bmage.getEquippedWeapon());
-    }
-
-    @Test
-    public void testEquipWhiteMage() throws InvalidStatValueException {
-        BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
-        WhiteMage wmage = new WhiteMage("wmage",  15, 10, 20, queue);
-        wmage.equip(bow1);
-        assertNotEquals("se equipó arma que no debió ser equipada", bow1, wmage.getEquippedWeapon());
-        assertEquals("se equipó arma que no debió ser equipada", null, wmage.getEquippedWeapon());
     }
 }

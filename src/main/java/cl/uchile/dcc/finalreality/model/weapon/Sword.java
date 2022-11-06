@@ -1,18 +1,16 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
-import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.Thief;
-import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
+
 import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * A class that holds all the information of a sword (type of weapon).
  */
-public class Sword extends Weapon implements EquipWeapon {
+public class Sword extends Weapon implements GameWeapon {
 
   public Sword(final @NotNull String name, final int damage, final int weight)
           throws InvalidStatValueException {

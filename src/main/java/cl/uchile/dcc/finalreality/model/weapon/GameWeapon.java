@@ -8,9 +8,25 @@ import cl.uchile.dcc.finalreality.model.character.player.Thief;
 import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 
 /**
-* This represents equipping a weopon to a character.
+* This represents a weapon from the game.
  */
-public interface EquipWeapon {
+public interface GameWeapon {
+
+  /**
+   * Returns the name of the weapon.
+   */
+  String getName();
+
+  /**
+   * Returns weapon damage.
+   */
+  int getDamage();
+
+  /**
+   * Returns the weight of the weapon.
+   */
+  int getWeight();
+
   /**
    * Equip a weapon to an Engineer.
    */

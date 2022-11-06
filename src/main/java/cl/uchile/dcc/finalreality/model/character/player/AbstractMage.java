@@ -68,8 +68,5 @@ public abstract class AbstractMage extends AbstractPlayerCharacter {
   public int getMaxMp() {
     return maxMp;
   }
-  // endregion
-
-
 
 }

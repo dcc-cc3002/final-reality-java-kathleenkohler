@@ -1,18 +1,16 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
-import cl.uchile.dcc.finalreality.model.character.player.Thief;
-import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
+
 import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * A class that holds all the information of a axe (type of weapon).
  */
-public class Axe extends Weapon implements EquipWeapon {
+public class Axe extends Weapon implements GameWeapon {
 
   public Axe(@NotNull final String name, final int damage, final int weight)
           throws InvalidStatValueException {
