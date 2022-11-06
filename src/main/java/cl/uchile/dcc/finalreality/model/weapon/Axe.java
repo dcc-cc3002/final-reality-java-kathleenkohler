@@ -29,8 +29,8 @@ public class Axe extends Weapon implements EquipWeapon {
       return false;
     }
 
-    return hashCode() == axe.hashCode() && damage == axe.damage && weight == axe.weight
-          && Objects.equals(name, axe.name);
+    return hashCode() == axe.hashCode() && damage == axe.damage && Objects.equals(name, axe.name)
+          && weight == axe.weight;
 
   }
 

@@ -30,8 +30,8 @@ public class Knife extends Weapon implements EquipWeapon {
       return false;
     }
 
-    return hashCode() == knife.hashCode() && damage == knife.damage && weight == knife.weight
-          && Objects.equals(name, knife.name);
+    return hashCode() == knife.hashCode() && Objects.equals(name, knife.name)
+          && damage == knife.damage && weight == knife.weight;
   }
 
   @Override

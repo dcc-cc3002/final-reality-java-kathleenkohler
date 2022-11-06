@@ -30,8 +30,8 @@ public class Bow extends Weapon implements EquipWeapon {
       return false;
     }
 
-    return hashCode() == bow.hashCode() && damage == bow.damage && weight == bow.weight
-          && Objects.equals(name, bow.name);
+    return hashCode() == bow.hashCode() && damage == bow.damage && Objects.equals(name, bow.name)
+          && weight == bow.weight;
   }
 
   @Override

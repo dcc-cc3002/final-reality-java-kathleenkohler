@@ -30,8 +30,8 @@ public class Sword extends Weapon implements EquipWeapon {
       return false;
     }
 
-    return hashCode() == sword.hashCode() && damage == sword.damage
-          && weight == sword.weight && Objects.equals(name, sword.name);
+    return hashCode() == sword.hashCode() && Objects.equals(name, sword.name)
+          && damage == sword.damage && weight == sword.weight;
   }
 
   @Override
