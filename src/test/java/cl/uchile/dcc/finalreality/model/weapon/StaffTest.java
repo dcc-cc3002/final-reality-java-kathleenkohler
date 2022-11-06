@@ -31,38 +31,38 @@ public class StaffTest {
 
     @Test
     public void testGetName() {
-        assertEquals("falla getName en staff","staff", staff1.getName());
-        assertNotEquals("falla getName en staff",staff2.getName(), staff3.getName());
+        assertEquals("fail to get Name in Staff class","staff", staff1.getName());
+        assertNotEquals("fail to get Name in Staff class",staff2.getName(), staff3.getName());
     }
 
     @Test
     public void testGetDamage() {
-        assertEquals("falla getDamage en staff",4, staff2.getDamage());
-        assertNotEquals("falla getDamage en staff",staff2.getDamage(), staff3.getDamage());
+        assertEquals("fail to get Damage in Staff class",4, staff2.getDamage());
+        assertNotEquals("fail to get Damage in Staff class",staff2.getDamage(), staff3.getDamage());
     }
 
     @Test
     public void testGetWeight() {
-        assertEquals("falla getWeight en staff", 8, staff3.getWeight());
-        assertNotEquals("falla getWeight en staff",7, staff3.getWeight());
+        assertEquals("fail to get Weight in Staff class", 8, staff3.getWeight());
+        assertNotEquals("fail to get Weight in Staff class",7, staff3.getWeight());
     }
 
     @Test
     public void testEquals() {
-        assertTrue("falla equals con mismo objeto en staff", staff1.equals(staff1));
-        assertFalse("falla equals con distintos objetos en staff", staff1.equals(staff3));
-        assertFalse("falla equals con distintos tipos de arma en staff", staff2.equals(sword));
+        assertTrue("equals fails with equal object in Staff", staff1.equals(staff1));
+        assertFalse("equals fails with different objects in Staff", staff1.equals(staff3));
+        assertFalse("equals fails with different types of weapon in Staff", staff2.equals(sword));
     }
 
     @Test
     public void testHashCode() {
-        assertEquals("falla hashcode para elementos iguales en staff", staff1.hashCode(), staff2.hashCode());
-        assertNotEquals("falla hashcode para elementos distintos en staff", staff2.hashCode(), staff3.hashCode());
+        assertEquals("hashcode fails for equal elements in Staff", staff1.hashCode(), staff2.hashCode());
+        assertNotEquals("hashcode fails for distinct elements in Staff", staff2.hashCode(), staff3.hashCode());
     }
 
     @Test
     public void testToString() {
-        assertEquals("metodo ToString no funciona en clase staff",
+        assertEquals("ToString method does not work in Staff class",
                 "Staff{name='staff', damage=4, weight=7}", staff2.toString());
     }
 
@@ -71,8 +71,10 @@ public class StaffTest {
         BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
         BlackMage bmage = new BlackMage("bmage",  15, 10, 20, queue);
         bmage.equip(staff1);
-        assertEquals("no se equipó arma que debió ser equipada", staff1, bmage.getEquippedWeapon());
-        assertNotEquals("no se equipó arma que debió ser equipada", null, bmage.getEquippedWeapon());
+        assertEquals("weapon that should have been equipped was not equipped in Staff class",
+              staff1, bmage.getEquippedWeapon());
+        assertNotEquals("weapon that should have been equipped was not equipped in Staff class",
+              null, bmage.getEquippedWeapon());
     }
 
     @Test
@@ -80,7 +82,9 @@ public class StaffTest {
         BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
         WhiteMage wmage = new WhiteMage("wmage",  15, 10, 20, queue);
         wmage.equip(staff1);
-        assertEquals("no se equipó arma que debió ser equipada", staff1, wmage.getEquippedWeapon());
-        assertNotEquals("no se equipó arma que debió ser equipada", null, wmage.getEquippedWeapon());
+        assertEquals("weapon that should have been equipped was not equipped in Staff class",
+              staff1, wmage.getEquippedWeapon());
+        assertNotEquals("weapon that should have been equipped was not equipped in Staff class",
+              null, wmage.getEquippedWeapon());
     }
 }

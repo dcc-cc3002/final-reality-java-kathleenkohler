@@ -3,7 +3,8 @@ package cl.uchile.dcc.finalreality.model.weapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.*;
+import cl.uchile.dcc.finalreality.model.character.player.Engineer;
+import cl.uchile.dcc.finalreality.model.character.player.Knight;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,39 +32,39 @@ public class AxeTest {
 
   @Test
   public void testGetName() {
-    assertEquals("falla getName en axe","axe", axe1.getName());
-    assertNotEquals("falla getName en axe",axe2.getName(), axe3.getName());
+    assertEquals("fail to get Name in Axe class","axe", axe1.getName());
+    assertNotEquals("fail to get Name in Axe class",axe2.getName(), axe3.getName());
   }
 
   @Test
   public void testGetDamage() {
-    assertEquals("falla getDamage en axe",4, axe2.getDamage());
-    assertNotEquals("falla getDamage en axe",axe2.getDamage(), axe3.getDamage());
+    assertEquals("fail to get Damage in Axe class",4, axe2.getDamage());
+    assertNotEquals("fail to get Damage in Axe class",axe2.getDamage(), axe3.getDamage());
   }
 
   @Test
   public void testGetWeight() {
-    assertEquals("falla getWeight en axe", 8, axe3.getWeight());
-    assertNotEquals("falla getWeight en axe",7, axe3.getWeight());
+    assertEquals("fail to get Weight in Axe class", 8, axe3.getWeight());
+    assertNotEquals("fail to get Weight in Axe class",7, axe3.getWeight());
   }
 
   @Test
   public void testEquals() {
-    assertTrue("falla equals con mismo objeto en axe", axe1.equals(axe1));
-    assertFalse("falla equals con distintos objetos en axe", axe1.equals(axe3));
-    assertFalse("falla equals con distintos tipos de arma en axe", axe2.equals(bow));
-    assertFalse("falla equals con distintos objetos en axe", axe1.equals(null));
+    assertTrue("equals fails with equal object in Axe", axe1.equals(axe1));
+    assertFalse("equals fails with different objects in Axe", axe1.equals(axe3));
+    assertFalse("equals fails with different types of weapon in Axe", axe2.equals(bow));
+    assertFalse("equals fails with different objects in Axe", axe1.equals(null));
   }
 
   @Test
   public void testHashCode() {
-    assertEquals("falla hashcode para elementos iguales en axe", axe1.hashCode(), axe2.hashCode());
-    assertNotEquals("falla hashcode para elementos distintos en axe", axe2.hashCode(), axe3.hashCode());
+    assertEquals("hashcode fails for equal elements in Axe", axe1.hashCode(), axe2.hashCode());
+    assertNotEquals("hashcode fails for distinct elements in Axe", axe2.hashCode(), axe3.hashCode());
   }
 
   @Test
   public void testToString() {
-    assertEquals("metodo ToString no funciona en clase axe",
+    assertEquals("ToString method does not work in Axe class",
             "Axe{name='axe', damage=4, weight=7}", axe2.toString());
   }
 
@@ -72,8 +73,10 @@ public class AxeTest {
     BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
     Engineer engineer = new Engineer("engineer", 4, 7, queue);
     engineer.equip(axe1);
-    assertEquals("no se equipó arma que debió ser equipada", axe1, engineer.getEquippedWeapon());
-    assertNotEquals("no se equipó arma que debió ser equipada", null, engineer.getEquippedWeapon());
+    assertEquals("weapon that should have been equipped was not equipped in Axe class",
+          axe1, engineer.getEquippedWeapon());
+    assertNotEquals("weapon that should have been equipped was not equipped in Axe class",
+          null, engineer.getEquippedWeapon());
   }
 
   @Test
@@ -81,8 +84,9 @@ public class AxeTest {
     BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
     Knight knight = new Knight("knight", 4, 7, queue);
     knight.equip(axe1);
-    assertEquals("no se equipó arma que debió ser equipada", axe1, knight.getEquippedWeapon());
-    assertNotEquals("no se equipó arma que debió ser equipada", null, knight.getEquippedWeapon());
+    assertEquals("weapon that should have been equipped was not equipped in Axe class",
+          axe1, knight.getEquippedWeapon());
+    assertNotEquals("weapon that should have been equipped was not equipped in Axe class",
+          null, knight.getEquippedWeapon());
   }
-
 }

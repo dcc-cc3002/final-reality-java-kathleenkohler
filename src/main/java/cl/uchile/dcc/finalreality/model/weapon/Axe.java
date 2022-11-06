@@ -3,7 +3,6 @@ package cl.uchile.dcc.finalreality.model.weapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.player.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
-
 import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 

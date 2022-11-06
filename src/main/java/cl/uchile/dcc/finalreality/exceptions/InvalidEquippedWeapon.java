@@ -1,7 +1,7 @@
 package cl.uchile.dcc.finalreality.exceptions;
 
 /**
- * This error is used to represent an invalid equipped weapon
+ * This error is used to represent an invalid equipped weapon.
  */
 public class InvalidEquippedWeapon extends Exception {
 

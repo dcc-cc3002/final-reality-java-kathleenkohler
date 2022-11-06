@@ -37,69 +37,69 @@ public class KnightTest {
     knight1.equip(knife);
     knight1.waitTurn();
     Thread.sleep(3000);
-    assertEquals("falla sacar enemy de la queue", knight1, queue.poll());
-    assertNotEquals("saca algo de la cola cuando está vacía", knight1, queue.poll());
-    assertNull("devuelve algo distinto de null cuando queue está vacía", queue.poll());
+    assertEquals("fail to remove Knight from the queue", knight1, queue.poll());
+    assertNotEquals("pull something from the queue when it is empty", knight1, queue.poll());
+    assertNull("returns something other than null when queue is empty", queue.poll());
   }
 
   @Test
   public void getEquippedWeaponAndEquip() throws InvalidEquippedWeapon {
     knight3.equip(knife);
-    assertEquals("falla al cargar arma en clase knight", knife, knight3.getEquippedWeapon());
+    assertEquals("fail to equip weapon in Knight class", knife, knight3.getEquippedWeapon());
     knight3.equip(axe);
-    assertEquals("falla al cambiar arma cargada en clase knight", axe, knight3.getEquippedWeapon());
+    assertEquals("fail to change equipped weapon in Knight class", axe, knight3.getEquippedWeapon());
   }
 
   @Test
   public void getName() {
-    assertEquals("falla al obtener nombre en clase knight", "knight", knight1.getName());
-    assertNotEquals("falla al obtener nombre en clase knight", knight2.getName(), knight3.getName());
+    assertEquals("fail to get Name in Knight class", "knight", knight1.getName());
+    assertNotEquals("fail to get Name in Knight class", knight2.getName(), knight3.getName());
   }
 
   @Test
   public void getCurrentHp() {
-    assertEquals("falla al obtener currentHp en clase knight", 15, knight1.getCurrentHp());
-    assertNotEquals("falla al obtener currentHp en clase knight", knight2.getCurrentHp(), knight3.getCurrentHp());
+    assertEquals("fail to get currentHp in Knight class", 15, knight1.getCurrentHp());
+    assertNotEquals("fail to get currentHp in Knight class", knight2.getCurrentHp(), knight3.getCurrentHp());
   }
 
   @Test
   public void getMaxHp() {
-    assertEquals("falla al obtener maxHp en clase knight", 15, knight1.getMaxHp());
-    assertNotEquals("falla al obtener maxHp en clase knight", knight2.getMaxHp(), knight3.getMaxHp());
+    assertEquals("fail to get MaxHp in Knight class", 15, knight1.getMaxHp());
+    assertNotEquals("fail to get MaxHp in Knight class", knight2.getMaxHp(), knight3.getMaxHp());
   }
 
   @Test
   public void getDefense() {
-    assertEquals("falla al obtener defensa en clase knight", 10, knight1.getDefense());
-    assertNotEquals("falla al obtener defensa en clase knight", knight2.getDefense(), knight3.getDefense());
+    assertEquals("fail to get Defense in Knight class", 10, knight1.getDefense());
+    assertNotEquals("fail to get Defense in Knight class", knight2.getDefense(), knight3.getDefense());
   }
 
   @Test
   public void setCurrentHp() throws InvalidStatValueException {
     knight1.setCurrentHp(10);
-    assertEquals("falla al cambiar currentHp en clase knight", 10, knight1.getCurrentHp());
-    assertEquals("falla al cambiar currentHp en clase knight", knight1.getCurrentHp(), knight3.getCurrentHp());
+    assertEquals("fail to change currentHp in Knight class", 10, knight1.getCurrentHp());
+    assertEquals("fail to change currentHp in Knight class", knight1.getCurrentHp(), knight3.getCurrentHp());
     knight3.setCurrentHp(5);
-    assertNotEquals("falla al obtener currentHp en clase knight", knight1.getCurrentHp(), knight3.getCurrentHp());
+    assertNotEquals("fail to change currentHp in Knight class", knight1.getCurrentHp(), knight3.getCurrentHp());
   }
 
   @Test
   public void testHashCode() {
-    assertEquals("falla hashcode para elementos iguales en knight", knight1.hashCode(), knight2.hashCode());
-    assertNotEquals("falla hashcode para elementos distintos en knight", knight2.hashCode(), knight3.hashCode());
+    assertEquals("hashcode fails for equal elements in Knight", knight1.hashCode(), knight2.hashCode());
+    assertNotEquals("hashcode fails for distinct elements in Knight", knight2.hashCode(), knight3.hashCode());
   }
 
   @Test
   public void testEquals() {
-    assertTrue("falla equals con mismo objeto en knight", knight1.equals(knight1));
-    assertTrue("falla equals con objetos iguales en knight", knight1.equals(knight2));
-    assertFalse("falla equals con distintos objetos en knight", knight1.equals(knight3));
-    assertFalse("falla equals con distintos tipos de personajes en knight", knight2.equals(wmage));
+    assertTrue("equals fails with same object in Knight", knight1.equals(knight1));
+    assertTrue("equals fails with equal object in Knight", knight1.equals(knight2));
+    assertFalse("equals fails with different objects in Knight", knight1.equals(knight3));
+    assertFalse("equals fails with different types of characters in Knight", knight2.equals(wmage));
   }
 
   @Test
   public void testToString() {
-    assertEquals("metodo ToString no funciona en clase knight",
+    assertEquals("ToString method does not work in Knight class",
           "Knight{maxHp=15, defense=10, name='knight'}", knight2.toString());
   }
 }

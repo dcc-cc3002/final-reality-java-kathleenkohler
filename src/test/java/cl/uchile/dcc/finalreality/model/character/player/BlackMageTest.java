@@ -35,23 +35,23 @@ public class BlackMageTest {
 
   @Test
   public void getCurrentMp() {
-    assertEquals("falla al obtener currentHp en clase bmage", 20, bmage1.getCurrentMp());
-    assertNotEquals("falla al obtener currentHp en clase bmage", bmage2.getCurrentMp(), bmage3.getCurrentMp());
+    assertEquals("fail to get currentMp in BlackMage class", 20, bmage1.getCurrentMp());
+    assertNotEquals("fail to get currentMp in BlackMage class", bmage2.getCurrentMp(), bmage3.getCurrentMp());
   }
 
   @Test
   public void setCurrentMp() throws InvalidStatValueException {
     bmage1.setCurrentMp(18);
-    assertEquals("falla al cambiar currentMp en clase bmage", 18, bmage1.getCurrentMp());
-    assertEquals("falla al cambiar currentMp en clase bmage", bmage1.getCurrentMp(), bmage3.getCurrentMp());
+    assertEquals("fail when changing currentMp in BlackMage class", 18, bmage1.getCurrentMp());
+    assertEquals("fail when changing currentMp in BlackMage class", bmage1.getCurrentMp(), bmage3.getCurrentMp());
     bmage3.setCurrentMp(15);
-    assertNotEquals("falla al obtener currentMp en clase bmage", bmage1.getCurrentMp(), bmage3.getCurrentMp());
+    assertNotEquals("fail when changing currentMp in BlackMage class", bmage1.getCurrentMp(), bmage3.getCurrentMp());
   }
 
   @Test
   public void getMaxMp() {
-    assertEquals("falla al obtener maxMp en clase bmage", 20, bmage1.getMaxMp());
-    assertNotEquals("falla al obtener maxMp en clase bmage", bmage2.getMaxMp(), bmage3.getMaxMp());
+    assertEquals("fail to get MaxMp in BlackMage class", 20, bmage1.getMaxMp());
+    assertNotEquals("fail to get MaxMp in BlackMage class", bmage2.getMaxMp(), bmage3.getMaxMp());
   }
 
   @Test
@@ -59,71 +59,71 @@ public class BlackMageTest {
     bmage1.equip(staff);
     bmage1.waitTurn();
     Thread.sleep(3000);
-    assertEquals("falla sacar enemy de la queue", bmage1, queue.poll());
-    assertNotEquals("saca algo de la cola cuando está vacía", bmage1, queue.poll());
-    assertNull("devuelve algo distinto de null cuando queue está vacía", queue.poll());
+    assertEquals("fail to remove BlackMage from the queue", bmage1, queue.poll());
+    assertNotEquals("pull something from the queue when it is empty", bmage1, queue.poll());
+    assertNull("returns something other than null when queue is empty", queue.poll());
   }
 
 
   @Test
   public void getEquippedWeaponAndEquip() throws InvalidEquippedWeapon {
     bmage3.equip(staff);
-    assertEquals("falla al cargar arma en clase bmage", staff, bmage3.getEquippedWeapon());
+    assertEquals("fail to equip weapon in BlackMage class", staff, bmage3.getEquippedWeapon());
     bmage3.equip(knife);
-    assertEquals("falla al cambiar arma cargada en clase bmage", knife, bmage3.getEquippedWeapon());
+    assertEquals("fail to change equipped weapon in BlackMage class", knife, bmage3.getEquippedWeapon());
   }
 
   @Test
   public void getName() {
-    assertEquals("falla al obtener nombre en clase bmage", "bmage", bmage1.getName());
-    assertNotEquals("falla al obtener nombre en clase bmage", bmage2.getName(), bmage3.getName());
+    assertEquals("fail to get Name in BlackMage class", "bmage", bmage1.getName());
+    assertNotEquals("fail to get Name in BlackMage class", bmage2.getName(), bmage3.getName());
   }
 
   @Test
   public void getCurrentHp() {
-    assertEquals("falla al obtener currentHp en clase bmage", 15, bmage1.getCurrentHp());
-    assertNotEquals("falla al obtener currentHp en clase bmage", bmage2.getCurrentHp(), bmage3.getCurrentHp());
+    assertEquals("fail to get currentHp in BlackMage class", 15, bmage1.getCurrentHp());
+    assertNotEquals("fail to get currentHp in BlackMage class", bmage2.getCurrentHp(), bmage3.getCurrentHp());
   }
 
   @Test
   public void getMaxHp() {
-    assertEquals("falla al obtener maxHp en clase bmage", 15, bmage1.getMaxHp());
-    assertNotEquals("falla al obtener maxHp en clase bmage", bmage2.getMaxHp(), bmage3.getMaxHp());
+    assertEquals("fail to get MaxHp in BlackMage class", 15, bmage1.getMaxHp());
+    assertNotEquals("fail to get MaxHp in BlackMage class", bmage2.getMaxHp(), bmage3.getMaxHp());
   }
 
   @Test
   public void getDefense() {
-    assertEquals("falla al obtener defensa en clase bmage", 10, bmage1.getDefense());
-    assertNotEquals("falla al obtener defensa en clase bmage", bmage2.getDefense(), bmage3.getDefense());
+    assertEquals("fail to get Defense in BlackMage class", 10, bmage1.getDefense());
+    assertNotEquals("fail to get Defense in BlackMage class", bmage2.getDefense(), bmage3.getDefense());
   }
 
   @Test
   public void setCurrentHp() throws InvalidStatValueException {
     bmage1.setCurrentHp(10);
-    assertEquals("falla al cambiar currentHp en clase bmage", 10, bmage1.getCurrentHp());
-    assertEquals("falla al cambiar currentHp en clase bmage", bmage1.getCurrentHp(), bmage3.getCurrentHp());
+    assertEquals("fail to change currentHp in BlackMage class", 10, bmage1.getCurrentHp());
+    assertEquals("fail to change currentHp in BlackMage class", bmage1.getCurrentHp(), bmage3.getCurrentHp());
     bmage3.setCurrentHp(5);
-    assertNotEquals("falla al obtener currentHp en clase bmage", bmage1.getCurrentHp(), bmage3.getCurrentHp());
+    assertNotEquals("fail to change currentHp in BlackMage class", bmage1.getCurrentHp(), bmage3.getCurrentHp());
   }
 
   @Test
   public void testEquals() {
-    assertTrue("falla equals con mismo objeto en bmage", bmage1.equals(bmage1));
-    assertTrue("falla equals con objetos iguales en bmage", bmage1.equals(bmage2));
-    assertFalse("falla equals con distintos objetos en bmage", bmage1.equals(bmage3));
-    assertFalse("falla equals con distintos tipos de personajes en bmage", bmage2.equals(engineer));
-    assertFalse("falla equals con distintos tipos de personajes en bmage", bmage2.equals(knife));
+    assertTrue("equals fails with same object in BlackMage", bmage1.equals(bmage1));
+    assertTrue("equals fails with equal objects in BlackMage", bmage1.equals(bmage2));
+    assertFalse("equals fails with different objects in BlackMage", bmage1.equals(bmage3));
+    assertFalse("equals fails with different types of characters in BlackMage", bmage2.equals(engineer));
+    assertFalse("equals fails with different types of objects in BlackMage", bmage2.equals(knife));
   }
 
   @Test
   public void testHashCode() {
-    assertEquals("falla hashcode para elementos iguales en bmage", bmage1.hashCode(), bmage2.hashCode());
-    assertNotEquals("falla hashcode para elementos distintos en bmage", bmage2.hashCode(), bmage3.hashCode());
+    assertEquals("hashcode fails for equal elements in BlackMage", bmage1.hashCode(), bmage2.hashCode());
+    assertNotEquals("hashcode fails for distinct elements in BlackMage", bmage2.hashCode(), bmage3.hashCode());
   }
 
   @Test
   public void testToString() {
-    assertEquals("metodo ToString no funciona en clase bmage",
+    assertEquals("ToString method does not work in BlackMage class",
           "BlackMage{maxMp=20, maxHp=15, defense=10, name='bmage'}", bmage2.toString());
   }
 }

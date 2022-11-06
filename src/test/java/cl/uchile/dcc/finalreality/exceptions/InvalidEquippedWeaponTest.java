@@ -47,71 +47,98 @@ public class InvalidEquippedWeaponTest {
   public ExpectedException exceptionRule = ExpectedException.none();
 
   @Test
-  public void KnightWeaponException() throws InvalidEquippedWeapon {
+  public void KnightAxeWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     knight.equip(staff);
+  }
 
+  @Test
+  public void KnightBowWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     knight.equip(bow);
   }
 
   @Test
-  public void EngineerWeaponException() throws InvalidEquippedWeapon {
+  public void EngineerSwordWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     engineer.equip(sword);
+  }
 
+  @Test
+  public void EngineerKnifeWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     engineer.equip(knife);
+  }
 
+  @Test
+  public void EngineerStaffWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     engineer.equip(staff);
   }
 
   @Test
-  public void ThiefWeaponException() throws InvalidEquippedWeapon {
+  public void ThiefAxeWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     thief.equip(axe);
+  }
 
+  @Test
+  public void ThiefStaffWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     thief.equip(staff);
   }
 
   @Test
-  public void BlackMageWeaponException() throws InvalidEquippedWeapon {
+  public void BlackMageSwordWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     bmage.equip(sword);
+  }
 
+  @Test
+  public void BlackMageAxeWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     bmage.equip(axe);
+  }
 
+  @Test
+  public void BlackMageBowWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     bmage.equip(bow);
   }
 
   @Test
-  public void WhiteMageWeaponException() throws InvalidEquippedWeapon {
+  public void WhiteMageSwordWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     wmage.equip(sword);
+  }
 
+  @Test
+  public void WhiteMageAxeWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     wmage.equip(axe);
+  }
 
+  @Test
+  public void WhiteMageKnifeWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     wmage.equip(knife);
+  }
 
+  @Test
+  public void WhiteMageBowWeaponException() throws InvalidEquippedWeapon {
     exceptionRule.expect(InvalidEquippedWeapon.class);
     exceptionRule.expectMessage("The provided weapon is not equippable by that character.");
     wmage.equip(bow);

@@ -34,23 +34,23 @@ public class WhiteMageTest {
 
   @Test
   public void getCurrentMp() {
-    assertEquals("falla al obtener currentHp en clase wmage", 20, wmage1.getCurrentMp());
-    assertNotEquals("falla al obtener currentHp en clase wmage", wmage2.getCurrentMp(), wmage3.getCurrentMp());
+    assertEquals("fail to get currentMp in WhiteMage class", 20, wmage1.getCurrentMp());
+    assertNotEquals("fail to get currentMp in WhiteMage class", wmage2.getCurrentMp(), wmage3.getCurrentMp());
   }
 
   @Test
   public void setCurrentMp() throws InvalidStatValueException {
     wmage1.setCurrentMp(18);
-    assertEquals("falla al cambiar currentMp en clase wmage", 18, wmage1.getCurrentMp());
-    assertEquals("falla al cambiar currentMp en clase wmage", wmage1.getCurrentMp(), wmage3.getCurrentMp());
+    assertEquals("fail when changing currentMp in WhiteMage class", 18, wmage1.getCurrentMp());
+    assertEquals("fail when changing currentMp in WhiteMage class", wmage1.getCurrentMp(), wmage3.getCurrentMp());
     wmage3.setCurrentMp(15);
-    assertNotEquals("falla al obtener currentMp en clase wmage", wmage1.getCurrentMp(), wmage3.getCurrentMp());
+    assertNotEquals("fail when changing currentMp in WhiteMage class", wmage1.getCurrentMp(), wmage3.getCurrentMp());
   }
 
   @Test
   public void getMaxMp() {
-    assertEquals("falla al obtener maxMp en clase wmage", 20, wmage1.getMaxMp());
-    assertNotEquals("falla al obtener maxMp en clase wmage", wmage2.getMaxMp(), wmage3.getMaxMp());
+    assertEquals("fail to get MaxMp in WhiteMage class", 20, wmage1.getMaxMp());
+    assertNotEquals("fail to get MaxMp in WhiteMage class", wmage2.getMaxMp(), wmage3.getMaxMp());
   }
 
   @Test
@@ -58,70 +58,70 @@ public class WhiteMageTest {
     wmage1.equip(staff);
     wmage1.waitTurn();
     Thread.sleep(3000);
-    assertEquals("falla sacar enemy de la queue", wmage1, queue.poll());
-    assertNotEquals("saca algo de la cola cuando está vacía", wmage1, queue.poll());
-    assertNull("devuelve algo distinto de null cuando queue está vacía", queue.poll());
+    assertEquals("fail to remove WhiteMage from the queue", wmage1, queue.poll());
+    assertNotEquals("pull something from the queue when it is empty", wmage1, queue.poll());
+    assertNull("returns something other than null when queue is empty", queue.poll());
   }
 
 
   @Test
   public void getEquippedWeaponAndEquip() throws InvalidEquippedWeapon {
     wmage3.equip(staff);
-    assertEquals("falla al cargar arma en clase wmage", staff, wmage3.getEquippedWeapon());
+    assertEquals("fail to equip weapon in WhiteMage class", staff, wmage3.getEquippedWeapon());
     wmage3.equip(staff2);
-    assertEquals("falla al cambiar arma cargada en clase wmage", staff2, wmage3.getEquippedWeapon());
+    assertEquals("fail to change equipped weapon in WhiteMage class", staff2, wmage3.getEquippedWeapon());
   }
 
   @Test
   public void getName() {
-    assertEquals("falla al obtener nombre en clase wmage", "wmage", wmage1.getName());
-    assertNotEquals("falla al obtener nombre en clase wmage", wmage2.getName(), wmage3.getName());
+    assertEquals("fail to get Name in WhiteMage class", "wmage", wmage1.getName());
+    assertNotEquals("fail to get Name in WhiteMage class", wmage2.getName(), wmage3.getName());
   }
 
   @Test
   public void getCurrentHp() {
-    assertEquals("falla al obtener currentHp en clase wmage", 15, wmage1.getCurrentHp());
-    assertNotEquals("falla al obtener currentHp en clase wmage", wmage2.getCurrentHp(), wmage3.getCurrentHp());
+    assertEquals("fail to get currentHp in WhiteMage class", 15, wmage1.getCurrentHp());
+    assertNotEquals("fail to get currentHp in WhiteMage class", wmage2.getCurrentHp(), wmage3.getCurrentHp());
   }
 
   @Test
   public void getMaxHp() {
-    assertEquals("falla al obtener maxHp en clase wmage", 15, wmage1.getMaxHp());
-    assertNotEquals("falla al obtener maxHp en clase wmage", wmage2.getMaxHp(), wmage3.getMaxHp());
+    assertEquals("fail to get MaxHp in WhiteMage class", 15, wmage1.getMaxHp());
+    assertNotEquals("fail to get MaxHp in WhiteMage class", wmage2.getMaxHp(), wmage3.getMaxHp());
   }
 
   @Test
   public void getDefense() {
-    assertEquals("falla al obtener defensa en clase wmage", 10, wmage1.getDefense());
-    assertNotEquals("falla al obtener defensa en clase wmage", wmage2.getDefense(), wmage3.getDefense());
+    assertEquals("fail to get Defense in WhiteMage class", 10, wmage1.getDefense());
+    assertNotEquals("fail to get Defense in WhiteMage class", wmage2.getDefense(), wmage3.getDefense());
   }
 
   @Test
   public void setCurrentHp() throws InvalidStatValueException {
     wmage1.setCurrentHp(10);
-    assertEquals("falla al cambiar currentHp en clase wmage", 10, wmage1.getCurrentHp());
-    assertEquals("falla al cambiar currentHp en clase wmage", wmage1.getCurrentHp(), wmage3.getCurrentHp());
+    assertEquals("fail to change currentHp in WhiteMage class", 10, wmage1.getCurrentHp());
+    assertEquals("fail to change currentHp in WhiteMage class", wmage1.getCurrentHp(), wmage3.getCurrentHp());
     wmage3.setCurrentHp(5);
-    assertNotEquals("falla al obtener currentHp en clase wmage", wmage1.getCurrentHp(), wmage3.getCurrentHp());
+    assertNotEquals("fail to change currentHp in WhiteMage class", wmage1.getCurrentHp(), wmage3.getCurrentHp());
   }
 
   @Test
   public void testEquals() {
-    assertTrue("falla equals con mismo objeto en wmage", wmage1.equals(wmage1));
-    assertTrue("falla equals con objetos iguales en wmage", wmage1.equals(wmage2));
-    assertFalse("falla equals con distintos objetos en wmage", wmage1.equals(wmage3));
-    assertFalse("falla equals con distintos tipos de personajes en wmage", wmage2.equals(thief));
+    assertTrue("equals fails with same object in WhiteMage", wmage1.equals(wmage1));
+    assertTrue("equals fails with equal object in WhiteMage", wmage1.equals(wmage2));
+    assertFalse("equals fails with different objects in WhiteMage", wmage1.equals(wmage3));
+    assertFalse("equals fails with different types of characters in WhiteMage", wmage2.equals(thief));
   }
 
   @Test
   public void testHashCode() {
-    assertEquals("falla hashcode para elementos iguales en wmage", wmage1.hashCode(), wmage2.hashCode());
-    assertNotEquals("falla hashcode para elementos distintos en wmage", wmage2.hashCode(), wmage3.hashCode());
+    assertEquals("hashcode fails for equal elements in WhiteMage", wmage1.hashCode(), wmage2.hashCode());
+    assertNotEquals("hashcode fails for distinct elements in WhiteMage", wmage2.hashCode(), wmage3.hashCode());
   }
 
   @Test
   public void testToString() {
-    assertEquals("metodo ToString no funciona en clase wmage",
+    assertEquals("ToString method does not work in WhiteMage class",
           "WhiteMage{maxMp=20, maxHp=15, defense=10, name='wmage'}", wmage2.toString());
     //WhiteMage{maxMp=20, maxHp=20, defense=10, name='whitemage'}
   }
