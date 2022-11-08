@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Kathleen Kohler~
  */
-public abstract class AbstractMage extends AbstractPlayerCharacter {
+public abstract class AbstractMage extends AbstractPlayerCharacter implements MageCharacter {
   protected int currentMp;
   protected final int maxMp;
 
@@ -44,27 +44,19 @@ public abstract class AbstractMage extends AbstractPlayerCharacter {
     this.currentMp = maxMp;
   }
 
-  // region : ACCESSORS
-
-  /**
-   * Returns the character's current MP.
-   */
+  @Override
   public int getCurrentMp() {
     return currentMp;
   }
 
-  /**
- * Sets the character's current MP.
- */
-  public void setCurrentMp(final int currentMp) throws InvalidStatValueException {
+  @Override
+  public void setCurrentMp(int currentMp) throws InvalidStatValueException {
     Require.statValueAtLeast(0, currentMp, "Current MP");
     Require.statValueAtMost(maxMp, currentMp, "Current MP");
     this.currentMp = currentMp;
   }
 
-  /**
-     * Returns the character's max MP.
-     */
+  @Override
   public int getMaxMp() {
     return maxMp;
   }
