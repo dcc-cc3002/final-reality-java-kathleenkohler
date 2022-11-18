@@ -28,8 +28,8 @@ public class WhiteMageTest {
     wmage2 = new WhiteMage("wmage", 15, 10, 20, queue);
     wmage3 = new WhiteMage("wmagee", 10, 5, 18, queue);
     thief = new Thief("thief", 15, 10, queue);
-    staff2 = new Staff("staff2", 4, 7);
-    staff = new Staff("staff", 4, 7);
+    staff2 = new Staff("staff2", 4, 7,7);
+    staff = new Staff("staff", 4, 7, 7);
   }
 
   @Test

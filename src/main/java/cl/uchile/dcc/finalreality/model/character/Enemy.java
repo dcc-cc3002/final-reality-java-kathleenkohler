@@ -85,9 +85,12 @@ public class Enemy extends AbstractCharacter {
 
   @Override
   public int hashCode() {
-    return Objects.hash(Enemy.class, name, weight, maxHp, defense);
+    return Objects.hash(Enemy.class, name, weight, maxHp, defense, damage);
   }
 
+  /**
+   *
+   */
   public void atacar(AbstractPlayerCharacter character) throws InvalidStatValueException {
     character.setCurrentHp(character.getCurrentHp() - (this.getDamage()-character.getDefense()));
   }

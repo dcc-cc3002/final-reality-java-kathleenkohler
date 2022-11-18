@@ -28,7 +28,7 @@ public class KnifeTest {
         knife1 = new Knife("knife", 4,7);
         knife2 = new Knife("knife", 4,7);
         knife3 = new Knife("knifee", 6,8);
-        staff = new Staff("staff", 4 ,7);
+        staff = new Staff("staff", 4 , 7,7);
     }
 
     @Test

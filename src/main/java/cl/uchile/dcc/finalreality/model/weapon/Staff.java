@@ -12,9 +12,16 @@ import org.jetbrains.annotations.NotNull;
 
 public class Staff extends Weapon implements GameWeapon {
 
-  public Staff(final @NotNull String name, final int damage, final int weight)
+  private final int magicDamage;
+
+  public Staff(final @NotNull String name, final int damage, final int magicDamage, int weight)
           throws InvalidStatValueException {
     super(name, damage, weight);
+    this.magicDamage =  magicDamage;
+  }
+
+  public int getMagicDamage() {
+    return magicDamage;
   }
 
 
@@ -29,18 +36,19 @@ public class Staff extends Weapon implements GameWeapon {
     }
 
     return hashCode() == staff.hashCode() && Objects.equals(name, staff.name)
-         && damage == staff.damage && weight == staff.weight;
+         && damage == staff.damage && weight == staff.weight && magicDamage == staff.magicDamage;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(Staff.class, getName(), getDamage(), getWeight());
+    return Objects.hash(Staff.class, getName(), getDamage(), getMagicDamage(),
+          getWeight());
   }
 
   @Override
   public String toString() {
-    return "Staff{name='%s', damage=%d, weight=%d}"
-                .formatted(super.getName(), super.getDamage(), super.getWeight());
+    return "Staff{name='%s', damage=%d, magicDamage=%d, weight=%d}"
+                .formatted(super.getName(), super.getDamage(), magicDamage, super.getWeight());
   }
 
   @Override

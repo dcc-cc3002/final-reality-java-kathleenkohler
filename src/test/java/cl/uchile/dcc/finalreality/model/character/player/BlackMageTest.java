@@ -29,7 +29,7 @@ public class BlackMageTest {
     bmage2 = new BlackMage("bmage", 15, 10, 20, queue);
     bmage3 = new BlackMage("bmagee", 10, 5, 18, queue);
     engineer = new Engineer("engineer", 15, 10, queue);
-    staff = new Staff("staff", 4, 7);
+    staff = new Staff("staff", 4, 7, 7);
     knife = new Knife("knife", 4, 7);
   }
 

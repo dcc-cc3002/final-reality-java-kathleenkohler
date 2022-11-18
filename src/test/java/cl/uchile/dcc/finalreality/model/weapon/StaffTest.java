@@ -23,9 +23,9 @@ public class StaffTest {
 
     @Before
     public void setUp() throws Exception{
-        staff1 = new Staff("staff", 4,7);
-        staff2 = new Staff("staff", 4,7);
-        staff3 = new Staff("stafff", 6,8);
+        staff1 = new Staff("staff", 4, 7,7);
+        staff2 = new Staff("staff", 4, 7,7);
+        staff3 = new Staff("stafff", 6, 7,8);
         sword = new Sword("sword", 4 ,7);
     }
 
@@ -87,4 +87,6 @@ public class StaffTest {
         assertNotEquals("weapon that should have been equipped was not equipped in Staff class",
               null, wmage.getEquippedWeapon());
     }
+
+    //AGREGAR MAGICDAMAGE
 }

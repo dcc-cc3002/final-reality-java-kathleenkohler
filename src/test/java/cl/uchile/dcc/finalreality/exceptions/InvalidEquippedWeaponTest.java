@@ -39,7 +39,7 @@ public class InvalidEquippedWeaponTest {
     axe = new Axe("axe", 4,7);
     bow = new Bow("bow", 4,7);
     knife = new Knife("knife", 4,7);
-    staff = new Staff("staff", 6,8);
+    staff = new Staff("staff", 6, 7,8);
     sword = new Sword("sword", 4 ,7);
   }
 
