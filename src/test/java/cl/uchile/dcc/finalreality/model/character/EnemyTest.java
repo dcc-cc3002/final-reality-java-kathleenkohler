@@ -19,23 +19,16 @@ public class EnemyTest {
   private Thief thief;
   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
 
-  //private ThrowingRunnable InvalidStatValueException = new InvalidStatValueException("a");
-  //private long InvalidStatValueException ;
 
   @Before
   public void setUp() throws Exception {
     queue = new LinkedBlockingQueue<>();
-    enemy1 = new Enemy("enemy", 20, 15, 10, queue);
-    enemy2 = new Enemy("enemy", 20, 15, 10, queue);
-    enemy3 = new Enemy("enemyy", 25, 10, 15, queue);
+    enemy1 = new Enemy("enemy", 20, 15, 10, 20,queue);
+    enemy2 = new Enemy("enemy", 20, 15, 10, 20, queue);
+    enemy3 = new Enemy("enemyy", 25, 10, 15, 20, queue);
     thief = new Thief("thief", 15, 10, queue);
   }
 
-  /*
-    @Test
-    public void addToQueue() {
-    }
-  */
   @Test
   public void getName() {
     assertEquals("falla al obtener nombre en clase enemy", "enemy", enemy1.getName());
@@ -89,7 +82,7 @@ public class EnemyTest {
   @Test
   public void testToString() {
     assertEquals("metodo ToString no funciona en clase enemy",
-          "Enemy{weight=20, maxHp=15, defense=10, name='enemy'}", enemy2.toString());
+          "Enemy{weight=20, maxHp=15, defense=10, damage=20, name='enemy'}", enemy2.toString());
   }
 
   @Test
