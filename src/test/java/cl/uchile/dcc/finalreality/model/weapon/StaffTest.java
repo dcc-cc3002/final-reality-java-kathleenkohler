@@ -63,7 +63,7 @@ public class StaffTest {
     @Test
     public void testToString() {
         assertEquals("ToString method does not work in Staff class",
-                "Staff{name='staff', damage=4, weight=7}", staff2.toString());
+                "Staff{name='staff', damage=4, magicDamage=7, weight=7}", staff2.toString());
     }
 
     @Test
