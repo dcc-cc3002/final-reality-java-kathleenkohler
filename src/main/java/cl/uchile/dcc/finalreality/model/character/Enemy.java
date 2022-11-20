@@ -3,7 +3,6 @@ package cl.uchile.dcc.finalreality.model.character;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
-
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
@@ -56,6 +55,9 @@ public class Enemy extends AbstractCharacter {
     return weight;
   }
 
+  /**
+   * Returns enemy damage.
+   */
   public int getDamage() {
     return damage;
   }
@@ -89,11 +91,12 @@ public class Enemy extends AbstractCharacter {
   }
 
   /**
-   *
+   * Attack a player.
    */
   public void attack(AbstractPlayerCharacter character) throws InvalidStatValueException {
-    if (this.getDamage()-character.getDefense()>0){
-      character.setCurrentHp(character.getCurrentHp() - (this.getDamage()-character.getDefense()));
+    if (this.getDamage() - character.getDefense() > 0) {
+      character.setCurrentHp(character.getCurrentHp() - (this.getDamage()
+            - character.getDefense()));
     }
   }
 }

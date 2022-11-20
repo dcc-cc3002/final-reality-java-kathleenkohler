@@ -4,7 +4,12 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
-import cl.uchile.dcc.finalreality.model.character.player.*;
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.Engineer;
+import cl.uchile.dcc.finalreality.model.character.player.Knight;
+import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 
 /**
  * An abstract class that holds all the information of a weapon.
@@ -71,27 +76,27 @@ public abstract class Weapon implements GameWeapon {
   }
 
   @Override
-  public void wCure(AbstractPlayerCharacter character) throws InvalidStatValueException {
+  public void weaponCure(AbstractPlayerCharacter character) throws InvalidStatValueException {
     return;
   }
 
   @Override
-  public void wPoison(Enemy enemy) throws InvalidStatValueException {
+  public void weaponPoison(Enemy enemy) throws InvalidStatValueException {
     return;
   }
 
   @Override
-  public void wParalysis(Enemy enemy) throws InvalidStatValueException {
+  public void weaponParalysis(Enemy enemy) throws InvalidStatValueException {
     return;
   }
 
   @Override
-  public void wThunder(Enemy enemy) throws InvalidStatValueException {
+  public void weaponThunder(Enemy enemy) throws InvalidStatValueException {
     return;
   }
 
   @Override
-  public void wFire(Enemy enemy) throws InvalidStatValueException {
+  public void weaponFire(Enemy enemy) throws InvalidStatValueException {
     return;
   }
 }

@@ -3,7 +3,12 @@ package cl.uchile.dcc.finalreality.model.weapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
-import cl.uchile.dcc.finalreality.model.character.player.*;
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
+import cl.uchile.dcc.finalreality.model.character.player.Engineer;
+import cl.uchile.dcc.finalreality.model.character.player.Knight;
+import cl.uchile.dcc.finalreality.model.character.player.Thief;
+import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 
 /**
 * This represents a weapon from the game.
@@ -50,10 +55,31 @@ public interface GameWeapon {
    */
   void equipWhiteMage(WhiteMage whitemage) throws InvalidEquippedWeapon;
 
-  void wCure(AbstractPlayerCharacter character) throws InvalidStatValueException;
-  void wPoison(Enemy enemy) throws InvalidStatValueException;
-  void wParalysis(Enemy enemy) throws InvalidStatValueException;
-  void wThunder(Enemy enemy) throws InvalidStatValueException;
-  void wFire(Enemy enemy) throws InvalidStatValueException;
+  /**
+   * Spell used to heal an ally for 30% of their maximum hit points.
+   */
+  void weaponCure(AbstractPlayerCharacter character) throws InvalidStatValueException;
+
+  /**
+   * Spell used to poison an enemy.
+   */
+  void weaponPoison(Enemy enemy) throws InvalidStatValueException;
+
+  /**
+   * Spell used to paralyze an enemy.
+   */
+  void weaponParalysis(Enemy enemy) throws InvalidStatValueException;
+
+  /**
+   * Spell used to reduce the opponent's life by magicDamage and has a 30% chance
+   * to paralyze him.
+   */
+  void weaponThunder(Enemy enemy) throws InvalidStatValueException;
+
+  /**
+   * Spell used to reduce the opponent's life by magicDamage and has a 20% chance
+   * to burn it.
+   */
+  void weaponFire(Enemy enemy) throws InvalidStatValueException;
 
 }

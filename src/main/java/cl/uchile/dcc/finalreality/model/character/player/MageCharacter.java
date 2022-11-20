@@ -31,12 +31,14 @@ public interface MageCharacter {
   void poison(Enemy enemy) throws InvalidSpell, InvalidStatValueException;
 
   /**
-   *
+   * Spell used to reduce the opponent's life by magicDamage and has a 30% chance
+   * to paralyze him.
    */
   void thunder(Enemy enemy) throws InvalidSpell, InvalidStatValueException;
 
   /**
-   *
+   * Spell used to reduce the opponent's life by magicDamage and has a 20% chance
+   * to burn it.
    */
   void fire(Enemy enemy) throws InvalidSpell, InvalidStatValueException;
 

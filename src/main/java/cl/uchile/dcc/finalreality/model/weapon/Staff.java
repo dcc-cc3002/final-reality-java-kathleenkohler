@@ -67,42 +67,39 @@ public class Staff extends Weapon implements GameWeapon {
   }
 
   @Override
-  public void wCure(AbstractPlayerCharacter character) throws InvalidStatValueException {
-    if(character.getCurrentHp()+(int)(0.3*character.getMaxHp())>=character.getMaxHp()) {
+  public void weaponCure(AbstractPlayerCharacter character) throws InvalidStatValueException {
+    if (character.getCurrentHp() + (int) (0.3 * character.getMaxHp()) >= character.getMaxHp()) {
       character.setCurrentHp(character.getMaxHp());
+    } else {
+      character.setCurrentHp(character.getCurrentHp() + (int) (0.3 * character.getMaxHp()));
     }
-    else {
-      character.setCurrentHp(character.getCurrentHp()+(int)(0.3*character.getMaxHp()));
-    }
   }
 
   @Override
-  public void wPoison(Enemy enemy) throws InvalidStatValueException {
-
-  }
-
-  @Override
-  public void wParalysis(Enemy enemy) throws InvalidStatValueException {
+  public void weaponPoison(Enemy enemy) throws InvalidStatValueException {
 
   }
 
   @Override
-  public void wThunder(Enemy enemy) throws InvalidStatValueException {
-    if(enemy.getCurrentHp()-this.magicDamage<=0) {
+  public void weaponParalysis(Enemy enemy) throws InvalidStatValueException {
+
+  }
+
+  @Override
+  public void weaponThunder(Enemy enemy) throws InvalidStatValueException {
+    if (enemy.getCurrentHp() - this.magicDamage <= 0) {
       enemy.setCurrentHp(0);
-    }
-    else {
-      enemy.setCurrentHp(enemy.getCurrentHp()-this.magicDamage);
+    } else {
+      enemy.setCurrentHp(enemy.getCurrentHp() - this.magicDamage);
     }
   }
 
   @Override
-  public void wFire(Enemy enemy) throws InvalidStatValueException {
-    if(enemy.getCurrentHp()-this.magicDamage<=0) {
+  public void weaponFire(Enemy enemy) throws InvalidStatValueException {
+    if (enemy.getCurrentHp() - this.magicDamage <= 0) {
       enemy.setCurrentHp(0);
-    }
-    else {
-      enemy.setCurrentHp(enemy.getCurrentHp()-this.magicDamage);
+    } else {
+      enemy.setCurrentHp(enemy.getCurrentHp() - this.magicDamage);
     }
   }
 }

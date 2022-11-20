@@ -85,7 +85,8 @@ public abstract class AbstractMage extends AbstractPlayerCharacter implements Ma
   }
 
   @Override
-  public void cure(AbstractPlayerCharacter character) throws InvalidSpell, InvalidStatValueException {
+  public void cure(AbstractPlayerCharacter character) throws InvalidSpell,
+        InvalidStatValueException {
     throw new InvalidSpell();
   }
 
