@@ -9,7 +9,9 @@
 package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
+import cl.uchile.dcc.finalreality.exceptions.InvalidSpell;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.Objects;
@@ -76,5 +78,16 @@ public class BlackMage extends AbstractMage {
   public void equip(Weapon weapon) throws InvalidEquippedWeapon {
     weapon.equipBlackMage(this);
   }
+
+  @Override
+  public void thunder(Enemy enemy) throws InvalidSpell {
+
+  }
+
+  @Override
+  public void fire(Enemy enemy) throws InvalidSpell {
+
+  }
+
 
 }
