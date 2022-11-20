@@ -1,6 +1,9 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
+import cl.uchile.dcc.finalreality.model.character.player.AbstractMage;
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 import java.util.Objects;
@@ -61,6 +64,46 @@ public class Staff extends Weapon implements GameWeapon {
   public void equipWhiteMage(WhiteMage whitemage) {
     whitemage.equippedWeapon = this;
     return;
+  }
+
+  @Override
+  public void wCure(AbstractPlayerCharacter character) throws InvalidStatValueException {
+    if(character.getCurrentHp()+(int)(0.3*character.getMaxHp())>=character.getMaxHp()) {
+      character.setCurrentHp(character.getMaxHp());
+    }
+    else {
+      character.setCurrentHp(character.getCurrentHp()+(int)(0.3*character.getMaxHp()));
+    }
+  }
+
+  @Override
+  public void wPoison(Enemy enemy) throws InvalidStatValueException {
+
+  }
+
+  @Override
+  public void wParalysis(Enemy enemy) throws InvalidStatValueException {
+
+  }
+
+  @Override
+  public void wThunder(Enemy enemy) throws InvalidStatValueException {
+    if(enemy.getCurrentHp()-this.magicDamage<=0) {
+      enemy.setCurrentHp(0);
+    }
+    else {
+      enemy.setCurrentHp(enemy.getCurrentHp()-this.magicDamage);
+    }
+  }
+
+  @Override
+  public void wFire(Enemy enemy) throws InvalidStatValueException {
+    if(enemy.getCurrentHp()-this.magicDamage<=0) {
+      enemy.setCurrentHp(0);
+    }
+    else {
+      enemy.setCurrentHp(enemy.getCurrentHp()-this.magicDamage);
+    }
   }
 }
 

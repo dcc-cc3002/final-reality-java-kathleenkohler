@@ -65,27 +65,27 @@ public abstract class AbstractMage extends AbstractPlayerCharacter implements Ma
   }
 
   @Override
-  public void poison(Enemy enemy) throws InvalidSpell {
+  public void poison(Enemy enemy) throws InvalidSpell, InvalidStatValueException {
     throw new InvalidSpell();
   }
 
   @Override
-  public void thunder(Enemy enemy) throws InvalidSpell {
+  public void thunder(Enemy enemy) throws InvalidSpell, InvalidStatValueException {
     throw new InvalidSpell();
   }
 
   @Override
-  public void fire(Enemy enemy) throws InvalidSpell {
+  public void fire(Enemy enemy) throws InvalidSpell, InvalidStatValueException {
     throw new InvalidSpell();
   }
 
   @Override
-  public void paralysis(Enemy enemy) throws InvalidSpell {
+  public void paralysis(Enemy enemy) throws InvalidSpell, InvalidStatValueException {
     throw new InvalidSpell();
   }
 
   @Override
-  public void cure(AbstractPlayerCharacter character) throws InvalidSpell {
+  public void cure(AbstractPlayerCharacter character) throws InvalidSpell, InvalidStatValueException {
     throw new InvalidSpell();
   }
 

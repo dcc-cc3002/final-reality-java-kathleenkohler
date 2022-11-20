@@ -1,11 +1,9 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
-import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
-import cl.uchile.dcc.finalreality.model.character.player.Engineer;
-import cl.uchile.dcc.finalreality.model.character.player.Knight;
-import cl.uchile.dcc.finalreality.model.character.player.Thief;
-import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
+import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
+import cl.uchile.dcc.finalreality.model.character.player.*;
 
 /**
 * This represents a weapon from the game.
@@ -51,5 +49,11 @@ public interface GameWeapon {
    * Equip a weapon to a WhiteMage.
    */
   void equipWhiteMage(WhiteMage whitemage) throws InvalidEquippedWeapon;
+
+  void wCure(AbstractPlayerCharacter character) throws InvalidStatValueException;
+  void wPoison(Enemy enemy) throws InvalidStatValueException;
+  void wParalysis(Enemy enemy) throws InvalidStatValueException;
+  void wThunder(Enemy enemy) throws InvalidStatValueException;
+  void wFire(Enemy enemy) throws InvalidStatValueException;
 
 }

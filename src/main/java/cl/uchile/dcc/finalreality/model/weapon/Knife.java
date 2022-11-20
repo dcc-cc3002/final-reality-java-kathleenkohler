@@ -62,4 +62,6 @@ public class Knife extends Weapon implements GameWeapon {
     return;
   }
 
+
+
 }

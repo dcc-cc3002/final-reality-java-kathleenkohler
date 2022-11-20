@@ -80,14 +80,19 @@ public class BlackMage extends AbstractMage {
   }
 
   @Override
-  public void thunder(Enemy enemy) throws InvalidSpell {
-
+  public void thunder(Enemy enemy) throws InvalidSpell, InvalidStatValueException {
+    if (this.getCurrentMp()-15>=0) {
+      this.setCurrentMp(this.getCurrentMp()-15);
+      (getEquippedWeapon()).wThunder(enemy);
+    }
   }
 
   @Override
-  public void fire(Enemy enemy) throws InvalidSpell {
-
+  public void fire(Enemy enemy) throws InvalidSpell, InvalidStatValueException {
+    if (this.getCurrentMp()-15>=0) {
+      this.setCurrentMp(this.getCurrentMp()-15);
+      (getEquippedWeapon()).wParalysis(enemy);
+    }
   }
-
 
 }

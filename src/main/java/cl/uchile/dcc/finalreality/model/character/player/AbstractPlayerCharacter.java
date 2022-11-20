@@ -74,6 +74,9 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    *
    */
   public void attack(Enemy enemy) throws InvalidStatValueException {
-    enemy.setCurrentHp(enemy.getCurrentHp()-((this.getEquippedWeapon()).getDamage()- enemy.getDefense()));
+    if ((this.getEquippedWeapon()).getDamage()- enemy.getDefense()>0) {
+      enemy.setCurrentHp(enemy.getCurrentHp() -
+            ((this.getEquippedWeapon()).getDamage() - enemy.getDefense()));
+    }
   }
 }

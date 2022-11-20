@@ -76,17 +76,27 @@ public class WhiteMage extends AbstractMage {
   }
 
   @Override
-  public void poison(Enemy enemy) throws InvalidSpell {
-
+  public void poison(Enemy enemy) throws InvalidSpell, InvalidStatValueException {
+    if (this.getCurrentMp()-40>=0) {
+      this.setCurrentMp(this.getCurrentMp()-40);
+      (getEquippedWeapon()).wPoison(enemy);
+    }
+    //else si no le queda printear(?
   }
 
   @Override
-  public void paralysis(Enemy enemy) throws InvalidSpell {
-
+  public void paralysis(Enemy enemy) throws InvalidSpell, InvalidStatValueException {
+    if (this.getCurrentMp()-25>=0) {
+      this.setCurrentMp(this.getCurrentMp()-25);
+      (getEquippedWeapon()).wParalysis(enemy);
+    }
   }
 
   @Override
-  public void cure(AbstractPlayerCharacter character) throws InvalidSpell {
-
+  public void cure(AbstractPlayerCharacter character) throws InvalidSpell, InvalidStatValueException {
+    if (this.getCurrentMp()-15>=0) {
+      this.setCurrentMp(this.getCurrentMp()-15);
+      (getEquippedWeapon()).wCure(character);
+    }
   }
 }

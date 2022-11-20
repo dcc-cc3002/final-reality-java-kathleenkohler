@@ -92,6 +92,8 @@ public class Enemy extends AbstractCharacter {
    *
    */
   public void attack(AbstractPlayerCharacter character) throws InvalidStatValueException {
-    character.setCurrentHp(character.getCurrentHp() - (this.getDamage()-character.getDefense()));
+    if (this.getDamage()-character.getDefense()>0){
+      character.setCurrentHp(character.getCurrentHp() - (this.getDamage()-character.getDefense()));
+    }
   }
 }

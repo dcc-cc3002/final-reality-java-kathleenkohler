@@ -28,26 +28,26 @@ public interface MageCharacter {
   /**
    * Spell used to poison an enemy.
    */
-  void poison(Enemy enemy) throws InvalidSpell;
+  void poison(Enemy enemy) throws InvalidSpell, InvalidStatValueException;
 
   /**
    *
    */
-  void thunder(Enemy enemy) throws InvalidSpell;
+  void thunder(Enemy enemy) throws InvalidSpell, InvalidStatValueException;
 
   /**
    *
    */
-  void fire(Enemy enemy) throws InvalidSpell;
+  void fire(Enemy enemy) throws InvalidSpell, InvalidStatValueException;
 
   /**
    * Spell used to paralyze an enemy.
    */
-  void paralysis(Enemy enemy) throws InvalidSpell;
+  void paralysis(Enemy enemy) throws InvalidSpell, InvalidStatValueException;
 
   /**
    * Spell used to heal an ally for 30% of their maximum hit points.
    */
-  void cure(AbstractPlayerCharacter character) throws InvalidSpell;
+  void cure(AbstractPlayerCharacter character) throws InvalidSpell, InvalidStatValueException;
 
 }
