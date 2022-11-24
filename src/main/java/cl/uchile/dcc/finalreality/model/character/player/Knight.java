@@ -42,7 +42,7 @@ public class Knight extends AbstractPlayerCharacter {
 
   @Override
   public String toString() {
-    return "Knight{maxHp=%d, defense=%d, name='%s'}".formatted(maxHp, defense, name);
+    return "Knight{maxHp=%d, currentHp=%d, defense=%d, name='%s'}".formatted(maxHp, currentHp, defense, name);
   }
 
   @Override

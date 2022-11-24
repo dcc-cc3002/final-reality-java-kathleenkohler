@@ -1,12 +1,16 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.model.character.Burned;
 import cl.uchile.dcc.finalreality.model.character.Enemy;
-import cl.uchile.dcc.finalreality.model.character.player.AbstractMage;
+import cl.uchile.dcc.finalreality.model.character.Paralyzed;
+import cl.uchile.dcc.finalreality.model.character.Poisoned;
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 import java.util.Objects;
+import java.util.Random;
+
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -68,7 +72,9 @@ public class Staff extends Weapon implements GameWeapon {
 
   @Override
   public void weaponCure(AbstractPlayerCharacter character) throws InvalidStatValueException {
-    if (character.getCurrentHp() + (int) (0.3 * character.getMaxHp()) >= character.getMaxHp()) {
+    if (character.getCurrentHp()==0) {
+      System.out.print("You can't heal a dead character");
+    } else if (character.getCurrentHp() + (int) (0.3 * character.getMaxHp()) >= character.getMaxHp()) {
       character.setCurrentHp(character.getMaxHp());
     } else {
       character.setCurrentHp(character.getCurrentHp() + (int) (0.3 * character.getMaxHp()));
@@ -77,12 +83,15 @@ public class Staff extends Weapon implements GameWeapon {
 
   @Override
   public void weaponPoison(Enemy enemy) throws InvalidStatValueException {
+    Poisoned poisoned = new Poisoned();
+    enemy.setState(poisoned);
 
   }
 
   @Override
   public void weaponParalysis(Enemy enemy) throws InvalidStatValueException {
-
+    Paralyzed paralyzed = new Paralyzed();
+    enemy.setState(paralyzed);
   }
 
   @Override
@@ -92,6 +101,12 @@ public class Staff extends Weapon implements GameWeapon {
     } else {
       enemy.setCurrentHp(enemy.getCurrentHp() - this.magicDamage);
     }
+    Random random = new Random();
+    int num = random.nextInt(1,10);
+    if (num<=3) {
+      Paralyzed paralyzed = new Paralyzed();
+      enemy.setState(paralyzed);
+    }
   }
 
   @Override
@@ -100,6 +115,12 @@ public class Staff extends Weapon implements GameWeapon {
       enemy.setCurrentHp(0);
     } else {
       enemy.setCurrentHp(enemy.getCurrentHp() - this.magicDamage);
+    }
+    Random random = new Random();
+    int num = random.nextInt(1,10);
+    if (num<=2) {
+      Burned burned = new Burned();
+      enemy.setState(burned);
     }
   }
 }

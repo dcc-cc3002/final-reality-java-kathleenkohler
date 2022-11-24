@@ -21,6 +21,8 @@ public class Enemy extends AbstractCharacter {
 
   private final int damage;
 
+  private State state = new Normal();
+
   /**
    * Creates a new enemy with a name, a weight and the queue with the characters ready to
    * play.
@@ -64,9 +66,9 @@ public class Enemy extends AbstractCharacter {
 
   @Override
   public String toString() {
-    return "Enemy{weight=%d, maxHp=%d, defense=%d, damage=%d, name='%s'}"
-            .formatted(weight, maxHp, defense, damage, name);
-  }
+    return "Enemy{name='%s', weight=%d, currentHp=%d defense=%d, damage=%d, state='%s'}"
+            .formatted(name, weight, currentHp, defense, damage, state );
+  } //agregar state(?
 
 
   @Override
@@ -95,8 +97,32 @@ public class Enemy extends AbstractCharacter {
    */
   public void attack(AbstractPlayerCharacter character) throws InvalidStatValueException {
     if (this.getDamage() - character.getDefense() > 0) {
-      character.setCurrentHp(character.getCurrentHp() - (this.getDamage()
-            - character.getDefense()));
+      if (character.getCurrentHp() - (this.getDamage() - character.getDefense())>0) {
+        character.setCurrentHp(character.getCurrentHp() - (this.getDamage()
+              - character.getDefense()));
+      } else {
+        character.setCurrentHp(0);
+      }
     }
   }
+
+  public State getState() {
+    return this.state;
+  }
+  public boolean isPoisoned() {
+    return state.isPoisoned();
+  }
+
+  public boolean isBurned() {
+    return state.isBurned();
+  }
+
+  public boolean isParalyzed() {
+    return state.isParalyzed();
+  }
+
+  public void setState(State s) {
+    this.state = s;
+  }
+
 }
