@@ -21,7 +21,7 @@ public class Enemy extends AbstractCharacter {
 
   private final int damage;
 
-  private State state = new Normal();
+  private State state = new Normal(0);
 
   /**
    * Creates a new enemy with a name, a weight and the queue with the characters ready to

@@ -83,14 +83,14 @@ public class Staff extends Weapon implements GameWeapon {
 
   @Override
   public void weaponPoison(Enemy enemy) throws InvalidStatValueException {
-    Poisoned poisoned = new Poisoned();
+    Poisoned poisoned = new Poisoned(this.magicDamage);
     enemy.setState(poisoned);
 
   }
 
   @Override
   public void weaponParalysis(Enemy enemy) throws InvalidStatValueException {
-    Paralyzed paralyzed = new Paralyzed();
+    Paralyzed paralyzed = new Paralyzed(this.magicDamage);
     enemy.setState(paralyzed);
   }
 
@@ -104,7 +104,7 @@ public class Staff extends Weapon implements GameWeapon {
     Random random = new Random();
     int num = random.nextInt(1,10);
     if (num<=3) {
-      Paralyzed paralyzed = new Paralyzed();
+      Paralyzed paralyzed = new Paralyzed(this.magicDamage);
       enemy.setState(paralyzed);
     }
   }
@@ -119,7 +119,7 @@ public class Staff extends Weapon implements GameWeapon {
     Random random = new Random();
     int num = random.nextInt(1,10);
     if (num<=2) {
-      Burned burned = new Burned();
+      Burned burned = new Burned(this.magicDamage);
       enemy.setState(burned);
     }
   }
