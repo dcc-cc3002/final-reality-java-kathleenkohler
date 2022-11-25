@@ -65,7 +65,7 @@ public class Thief extends AbstractPlayerCharacter {
 
   @Override
   public String toString() {
-    return "Thief{maxHp=%d, currentHp=%d, defense=%d, name='%s'}".formatted(maxHp, currentHp, defense, name);
+    return "Thief{currentHp=%d, defense=%d, name='%s'}".formatted(currentHp, defense, name);
   }
 
   @Override
