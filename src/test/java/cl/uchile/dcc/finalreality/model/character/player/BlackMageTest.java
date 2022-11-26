@@ -1,7 +1,9 @@
 package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
+import cl.uchile.dcc.finalreality.exceptions.InvalidSpell;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.Staff;
@@ -22,6 +24,8 @@ public class BlackMageTest {
   private Staff staff;
   private Knife knife;
 
+  private Enemy enemy;
+
   @Before
   public void setUp() throws Exception {
     queue = new LinkedBlockingQueue<>();
@@ -31,6 +35,7 @@ public class BlackMageTest {
     engineer = new Engineer("engineer", 15, 10, queue);
     staff = new Staff("staff", 4, 7, 7);
     knife = new Knife("knife", 4, 7);
+    enemy = new Enemy("enemy", 10, 20, 5,10,queue);
   }
 
   @Test
@@ -124,6 +129,20 @@ public class BlackMageTest {
   @Test
   public void testToString() {
     assertEquals("ToString method does not work in BlackMage class",
-          "BlackMage{maxMp=20, maxHp=15, defense=10, name='bmage'}", bmage2.toString());
+          "BlackMage{currentMp=20, currentHp=15, defense=10, name='bmage'}", bmage2.toString());
   }
+  @Test
+  public void testThunder() throws InvalidStatValueException, InvalidSpell, InvalidEquippedWeapon {
+    bmage1.equip(staff);
+    bmage1.thunder(enemy);
+    assertEquals(5, bmage1.getCurrentMp());
+  }
+
+  @Test
+  public void testFire() throws InvalidStatValueException, InvalidSpell, InvalidEquippedWeapon {
+    bmage1.equip(staff);
+    bmage1.fire(enemy);
+    assertEquals(5, bmage1.getCurrentMp());
+  }
+
 }

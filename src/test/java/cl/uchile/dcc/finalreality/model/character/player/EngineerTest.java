@@ -103,6 +103,6 @@ public class EngineerTest {
   @Test
   public void testToString() {
     assertEquals("ToString method does not work in Engineer class",
-          "Engineer{maxHp=15, defense=10, name='engineer'}", engineer2.toString());
+          "Engineer{currentHp=15, defense=10, name='engineer'}", engineer2.toString());
   }
 }

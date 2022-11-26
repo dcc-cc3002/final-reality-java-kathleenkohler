@@ -100,6 +100,6 @@ public class KnightTest {
   @Test
   public void testToString() {
     assertEquals("ToString method does not work in Knight class",
-          "Knight{maxHp=15, defense=10, name='knight'}", knight2.toString());
+          "Knight{currentHp=15, defense=10, name='knight'}", knight2.toString());
   }
 }

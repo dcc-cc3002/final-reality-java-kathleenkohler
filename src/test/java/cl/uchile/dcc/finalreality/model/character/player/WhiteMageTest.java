@@ -1,7 +1,9 @@
 package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
+import cl.uchile.dcc.finalreality.exceptions.InvalidSpell;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Staff;
 import org.junit.Before;
@@ -21,20 +23,23 @@ public class WhiteMageTest {
   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
   private Staff staff;
   private Staff staff2;
+  private Enemy enemy;
+
 
   @Before
   public void setUp() throws Exception {
-    wmage1 = new WhiteMage("wmage", 15, 10, 20, queue);
-    wmage2 = new WhiteMage("wmage", 15, 10, 20, queue);
+    wmage1 = new WhiteMage("wmage", 15, 10, 40, queue);
+    wmage2 = new WhiteMage("wmage", 15, 10, 40, queue);
     wmage3 = new WhiteMage("wmagee", 10, 5, 18, queue);
     thief = new Thief("thief", 15, 10, queue);
     staff2 = new Staff("staff2", 4, 7,7);
     staff = new Staff("staff", 4, 7, 7);
+    enemy = new Enemy("enemy", 10, 20, 5,10,queue);
   }
 
   @Test
   public void getCurrentMp() {
-    assertEquals("fail to get currentMp in WhiteMage class", 20, wmage1.getCurrentMp());
+    assertEquals("fail to get currentMp in WhiteMage class", 40, wmage1.getCurrentMp());
     assertNotEquals("fail to get currentMp in WhiteMage class", wmage2.getCurrentMp(), wmage3.getCurrentMp());
   }
 
@@ -49,7 +54,7 @@ public class WhiteMageTest {
 
   @Test
   public void getMaxMp() {
-    assertEquals("fail to get MaxMp in WhiteMage class", 20, wmage1.getMaxMp());
+    assertEquals("fail to get MaxMp in WhiteMage class", 40, wmage1.getMaxMp());
     assertNotEquals("fail to get MaxMp in WhiteMage class", wmage2.getMaxMp(), wmage3.getMaxMp());
   }
 
@@ -122,7 +127,28 @@ public class WhiteMageTest {
   @Test
   public void testToString() {
     assertEquals("ToString method does not work in WhiteMage class",
-          "WhiteMage{maxMp=20, maxHp=15, defense=10, name='wmage'}", wmage2.toString());
+          "WhiteMage{currentMp=40, currentHp=15, defense=10, name='wmage'}", wmage2.toString());
     //WhiteMage{maxMp=20, maxHp=20, defense=10, name='whitemage'}
+  }
+
+  @Test
+  public void testPoison() throws InvalidStatValueException, InvalidSpell, InvalidEquippedWeapon {
+    wmage1.equip(staff);
+    wmage1.thunder(enemy);
+    assertEquals(0, wmage1.getCurrentMp());
+  }
+
+  @Test
+  public void testParalysis() throws InvalidStatValueException, InvalidSpell, InvalidEquippedWeapon {
+    wmage1.equip(staff);
+    wmage1.fire(enemy);
+    assertEquals(15, wmage1.getCurrentMp());
+  }
+
+  @Test
+  public void testCure() throws InvalidStatValueException, InvalidSpell, InvalidEquippedWeapon {
+    wmage1.equip(staff);
+    wmage1.fire(enemy);
+    assertEquals(15, wmage1.getCurrentMp());
   }
 }
