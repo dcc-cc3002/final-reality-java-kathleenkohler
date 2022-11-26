@@ -1,11 +1,6 @@
 package cl.uchile.dcc.finalreality.model.character;
 
-import cl.uchile.dcc.finalreality.model.character.Enemy;
-
 public class State {
-
-  protected Enemy enemy;
-
   protected int magiDam;
 
   public State(int magiDam) {
@@ -15,6 +10,7 @@ public class State {
   public int getMagiDam() {
     return magiDam;
   }
+
   public boolean isPoisoned() {
     return false;
   }

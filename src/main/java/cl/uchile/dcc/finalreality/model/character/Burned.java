@@ -1,6 +1,9 @@
 package cl.uchile.dcc.finalreality.model.character;
 
-public class Burned extends State{
+/**
+ *
+ */
+public class Burned extends State {
 
   public Burned(int magiDam) {
     super(magiDam);

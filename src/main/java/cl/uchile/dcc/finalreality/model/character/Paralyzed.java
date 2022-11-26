@@ -1,6 +1,6 @@
 package cl.uchile.dcc.finalreality.model.character;
 
-public class Paralyzed extends State{
+public class Paralyzed extends State {
 
 
   public Paralyzed(int magiDam) {

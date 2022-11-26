@@ -72,9 +72,10 @@ public class Staff extends Weapon implements GameWeapon {
 
   @Override
   public void weaponCure(AbstractPlayerCharacter character) throws InvalidStatValueException {
-    if (character.getCurrentHp()==0) {
+    if (character.getCurrentHp() == 0) {
       System.out.print("You can't heal a dead character");
-    } else if (character.getCurrentHp() + (int) (0.3 * character.getMaxHp()) >= character.getMaxHp()) {
+    } else if (character.getCurrentHp() + (int) (0.3 * character.getMaxHp())
+          >= character.getMaxHp()) {
       character.setCurrentHp(character.getMaxHp());
     } else {
       character.setCurrentHp(character.getCurrentHp() + (int) (0.3 * character.getMaxHp()));
@@ -102,8 +103,8 @@ public class Staff extends Weapon implements GameWeapon {
       enemy.setCurrentHp(enemy.getCurrentHp() - this.magicDamage);
     }
     Random random = new Random();
-    int num = random.nextInt(1,10);
-    if (num<=3) {
+    int num = random.nextInt(1, 10);
+    if (num <= 3) {
       Paralyzed paralyzed = new Paralyzed(this.magicDamage);
       enemy.setState(paralyzed);
     }
@@ -117,8 +118,8 @@ public class Staff extends Weapon implements GameWeapon {
       enemy.setCurrentHp(enemy.getCurrentHp() - this.magicDamage);
     }
     Random random = new Random();
-    int num = random.nextInt(1,10);
-    if (num<=2) {
+    int num = random.nextInt(1, 10);
+    if (num <= 2) {
       Burned burned = new Burned(this.magicDamage);
       enemy.setState(burned);
     }

@@ -66,8 +66,8 @@ public class Enemy extends AbstractCharacter {
 
   @Override
   public String toString() {
-    return "Enemy{name='%s', weight=%d, currentHp=%d defense=%d, damage=%d, state='%s'}"
-            .formatted(name, weight, currentHp, defense, damage, state );
+    return "Enemy{name='%s', weight=%d, currentHp=%d, defense=%d, damage=%d}"
+            .formatted(name, weight, currentHp, defense, damage);
   } //agregar state(?
 
 
@@ -97,7 +97,7 @@ public class Enemy extends AbstractCharacter {
    */
   public void attack(AbstractPlayerCharacter character) throws InvalidStatValueException {
     if (this.getDamage() - character.getDefense() > 0) {
-      if (character.getCurrentHp() - (this.getDamage() - character.getDefense())>0) {
+      if (character.getCurrentHp() - (this.getDamage() - character.getDefense()) > 0) {
         character.setCurrentHp(character.getCurrentHp() - (this.getDamage()
               - character.getDefense()));
       } else {
@@ -109,6 +109,7 @@ public class Enemy extends AbstractCharacter {
   public State getState() {
     return this.state;
   }
+
   public boolean isPoisoned() {
     return state.isPoisoned();
   }
