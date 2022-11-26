@@ -134,21 +134,21 @@ public class WhiteMageTest {
   @Test
   public void testPoison() throws InvalidStatValueException, InvalidSpell, InvalidEquippedWeapon {
     wmage1.equip(staff);
-    wmage1.thunder(enemy);
+    wmage1.poison(enemy);
     assertEquals(0, wmage1.getCurrentMp());
   }
 
   @Test
   public void testParalysis() throws InvalidStatValueException, InvalidSpell, InvalidEquippedWeapon {
     wmage1.equip(staff);
-    wmage1.fire(enemy);
+    wmage1.paralysis(enemy);
     assertEquals(15, wmage1.getCurrentMp());
   }
 
   @Test
   public void testCure() throws InvalidStatValueException, InvalidSpell, InvalidEquippedWeapon {
     wmage1.equip(staff);
-    wmage1.fire(enemy);
-    assertEquals(15, wmage1.getCurrentMp());
+    wmage1.cure(thief);
+    assertEquals(25, wmage1.getCurrentMp());
   }
 }

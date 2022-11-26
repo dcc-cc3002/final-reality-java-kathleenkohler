@@ -82,7 +82,7 @@ public class EnemyTest {
   @Test
   public void testToString() {
     assertEquals("metodo ToString no funciona en clase enemy",
-          "Enemy{name='enemy', weight=20, maxHp=15, defense=10, damage=20}", enemy2.toString());
+          "Enemy{name='enemy', weight=20, currentHp=15, defense=10, damage=20}", enemy2.toString());
   }
 
   @Test
