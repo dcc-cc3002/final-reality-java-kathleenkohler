@@ -2,6 +2,7 @@ package cl.uchile.dcc.finalreality.model.weapon;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.*;
 import org.junit.Before;
@@ -20,13 +21,22 @@ public class StaffTest {
     private Staff staff2;
     private Staff staff3;
     private Sword sword;
+    private Enemy enemy;
+    private Enemy enemy2;
+    private Thief thief1;
+    private Thief thief2;
+    BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
 
     @Before
     public void setUp() throws Exception{
         staff1 = new Staff("staff", 4, 7,7);
         staff2 = new Staff("staff", 4, 7,7);
-        staff3 = new Staff("stafff", 6, 7,8);
+        staff3 = new Staff("stafff", 6, 5,8);
         sword = new Sword("sword", 4 ,7);
+        enemy = new Enemy("enemy", 10, 20, 5,25,queue);
+        enemy2 = new Enemy("enemy", 10, 5, 5,20,queue);
+        thief1 = new Thief("thief", 10, 10, queue);
+        thief2 = new Thief("thief", 15, 10, queue);
     }
 
     @Test
@@ -88,5 +98,53 @@ public class StaffTest {
               null, wmage.getEquippedWeapon());
     }
 
-    //AGREGAR MAGICDAMAGE
+    @Test
+    public void testGetMagicDamage() {
+        assertEquals(7, staff1.getMagicDamage());
+        assertNotEquals(7, staff3.getMagicDamage());
+    }
+
+    @Test
+    public void testWeaponCure() throws InvalidStatValueException {
+        enemy.attack(thief1);
+        staff1.weaponCure(thief1);
+        assertEquals(0, thief1.getCurrentHp());
+        staff1.weaponCure(thief2);
+        assertEquals(15, thief2.getCurrentHp());
+        enemy2.attack(thief2);
+        assertEquals(5, thief2.getCurrentHp());
+        staff1.weaponCure(thief2);
+        assertEquals(9, thief2.getCurrentHp());
+
+
+    }
+
+    @Test
+    public void testWeaponParalysis() throws InvalidStatValueException {
+        staff1.weaponParalysis(enemy);
+        assertTrue(enemy.isParalyzed());
+    }
+
+    @Test
+    public void testWeaponPoison() throws InvalidStatValueException {
+        staff1.weaponPoison(enemy);
+        assertTrue(enemy.isPoisoned());
+
+    }
+
+    @Test
+    public void testWeaponThunder() throws InvalidStatValueException {
+        staff1.weaponThunder(enemy);
+        assertEquals(13, enemy.getCurrentHp());
+        staff1.weaponThunder(enemy2);
+        assertEquals(0, enemy2.getCurrentHp());
+    }
+
+    @Test
+    public void testWeaponFire() throws InvalidStatValueException {
+        staff1.weaponFire(enemy);
+        assertEquals(13,enemy.getCurrentHp());
+        staff1.weaponFire(enemy2);
+        assertEquals(0,enemy2.getCurrentHp());
+    }
 }

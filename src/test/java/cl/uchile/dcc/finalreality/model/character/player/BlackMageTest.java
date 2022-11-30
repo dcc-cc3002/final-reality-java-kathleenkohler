@@ -25,6 +25,7 @@ public class BlackMageTest {
   private Knife knife;
 
   private Enemy enemy;
+  private Enemy enemy2;
 
   @Before
   public void setUp() throws Exception {
@@ -33,9 +34,10 @@ public class BlackMageTest {
     bmage2 = new BlackMage("bmage", 15, 10, 20, queue);
     bmage3 = new BlackMage("bmagee", 10, 5, 18, queue);
     engineer = new Engineer("engineer", 15, 10, queue);
-    staff = new Staff("staff", 4, 7, 7);
+    staff = new Staff("staff", 10, 7, 7);
     knife = new Knife("knife", 4, 7);
     enemy = new Enemy("enemy", 10, 20, 5,10,queue);
+    enemy2 = new Enemy("enemy", 10, 5, 3,10,queue);
   }
 
   @Test
@@ -143,6 +145,15 @@ public class BlackMageTest {
     bmage1.equip(staff);
     bmage1.fire(enemy);
     assertEquals(5, bmage1.getCurrentMp());
+  }
+
+  @Test
+  public void testAttack() throws InvalidStatValueException, InvalidEquippedWeapon {
+    bmage1.equip(staff);
+    bmage1.attack(enemy);
+    assertEquals(15, enemy.getCurrentHp());
+    bmage1.attack(enemy2);
+    assertEquals(0, enemy2.getCurrentHp());
   }
 
 }

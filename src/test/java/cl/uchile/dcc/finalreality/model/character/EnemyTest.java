@@ -17,6 +17,10 @@ public class EnemyTest {
   private Enemy enemy2;
   private Enemy enemy3;
   private Thief thief;
+  private Thief thief2;
+  private Burned burned;
+  private Poisoned poisoned;
+  private Paralyzed paralyzed;
   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
 
 
@@ -26,7 +30,11 @@ public class EnemyTest {
     enemy1 = new Enemy("enemy", 20, 15, 10, 20,queue);
     enemy2 = new Enemy("enemy", 20, 15, 10, 20, queue);
     enemy3 = new Enemy("enemyy", 25, 10, 15, 20, queue);
-    thief = new Thief("thief", 15, 10, queue);
+    thief = new Thief("thief", 35, 10, queue);
+    thief2 = new Thief("thief", 7, 10, queue);
+    burned = new Burned(7);
+    paralyzed = new Paralyzed(8);
+    poisoned = new Poisoned(6);
   }
 
   @Test
@@ -98,4 +106,41 @@ public class EnemyTest {
     assertEquals("falla hashcode para elementos iguales en enemy", enemy1.hashCode(), enemy2.hashCode());
     assertNotEquals("falla hashcode para elementos distintos en enemy", enemy2.hashCode(), enemy3.hashCode());
   }
+
+  @Test
+  public void testGetStateAndSetState() {
+    enemy1.setState(burned);
+    assertEquals(burned, enemy1.getState());
+    assertNotEquals(poisoned, enemy1.getState());
+  }
+
+  @Test
+  public void testIsPoisoned() {
+    enemy1.setState(burned);
+    assertFalse(enemy1.isPoisoned());
+    enemy1.setState(poisoned);
+    assertTrue(enemy1.isPoisoned());
+  }
+  @Test
+  public void testIsBurned() {
+    enemy1.setState(burned);
+    assertTrue(enemy1.isBurned());
+    enemy1.setState(poisoned);
+    assertFalse(enemy1.isBurned());
+  }
+  @Test
+  public void testIsParalyzed() {
+    enemy1.setState(burned);
+    assertFalse(enemy1.isParalyzed());
+    enemy1.setState(paralyzed);
+    assertTrue(enemy1.isParalyzed());
+  }
+  @Test
+  public void testAttack() throws InvalidStatValueException {
+    enemy1.attack(thief);
+    assertEquals(25, thief.getCurrentHp());
+    enemy1.attack(thief2);
+    assertEquals(0, thief2.getCurrentHp());
+  }
+
 }

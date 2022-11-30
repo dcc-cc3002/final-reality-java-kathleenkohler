@@ -73,7 +73,7 @@ public class Staff extends Weapon implements GameWeapon {
   @Override
   public void weaponCure(AbstractPlayerCharacter character) throws InvalidStatValueException {
     if (character.getCurrentHp() == 0) {
-      System.out.print("You can't heal a dead character");
+      character.setCurrentHp(0);
     } else if (character.getCurrentHp() + (int) (0.3 * character.getMaxHp())
           >= character.getMaxHp()) {
       character.setCurrentHp(character.getMaxHp());

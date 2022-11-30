@@ -1,6 +1,6 @@
 package cl.uchile.dcc.finalreality.model.character;
 
-public class State {
+public abstract class State {
   protected int magiDam;
 
   public State(int magiDam) {

@@ -2,7 +2,9 @@ package cl.uchile.dcc.finalreality.model.weapon;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidEquippedWeapon;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.Thief;
 import org.junit.Before;
@@ -21,6 +23,9 @@ public class SwordTest {
     private Sword sword2;
     private Sword sword3;
     private Axe axe;
+    private Enemy enemy;
+    private BlackMage bmage;
+    BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
 
     @Before
     public void setUp() throws Exception{
@@ -28,6 +33,8 @@ public class SwordTest {
         sword2 = new Sword("sword", 4,7);
         sword3 = new Sword("swordd", 6,8);
         axe = new Axe("axe", 4 ,7);
+        enemy = new Enemy("enemy", 10, 20, 5,10,queue);
+        bmage = new BlackMage("bmagee", 10, 5, 18, queue);
     }
 
     @Test
@@ -88,4 +95,30 @@ public class SwordTest {
         assertNotEquals("weapon that should have been equipped was not equipped in Sword class",
               null, thief.getEquippedWeapon());
     }
+    @Test
+    public void testWeaponCure() throws InvalidStatValueException {
+        sword1.weaponCure(bmage);
+        assertEquals(10, bmage.getCurrentHp());
+    }
+    @Test
+    public void testWeaponPoison() throws InvalidStatValueException {
+        sword1.weaponPoison(enemy);
+        assertFalse(enemy.isPoisoned());
+    }
+    @Test
+    public void testWeaponParalysis() throws InvalidStatValueException {
+        sword1.weaponParalysis(enemy);
+        assertFalse(enemy.isParalyzed());
+    }
+    @Test
+    public void testWeaponThunder() throws InvalidStatValueException {
+        sword1.weaponThunder(enemy);
+        assertFalse(enemy.isBurned());
+    }
+    @Test
+    public void testWeaponFire() throws InvalidStatValueException {
+        sword1.weaponFire(enemy);
+        assertFalse(enemy.isBurned());
+    }
+
 }
