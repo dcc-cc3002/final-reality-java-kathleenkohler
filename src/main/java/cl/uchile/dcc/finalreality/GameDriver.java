@@ -8,7 +8,6 @@ public class GameDriver {
 
   public static void main(String args[]) throws InvalidStatValueException, IOException,
         InvalidEquippedWeapon {
-    //Player player;
     Game game = new Game();
     playGame(game);
   }

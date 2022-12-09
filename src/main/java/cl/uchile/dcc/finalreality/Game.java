@@ -21,14 +21,13 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class Game {
 
   private Player player;
-  private ArrayList<AbstractPlayerCharacter> characterInventory = new ArrayList<>();
+  public ArrayList<AbstractPlayerCharacter> characterInventory = new ArrayList<>();
   private ArrayList<AbstractPlayerCharacter> playerCharacterInventory = new ArrayList<>();
-  private ArrayList<Enemy> enemies = new ArrayList<>();
+  public ArrayList<Enemy> enemies = new ArrayList<>();
   private BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
   private final int maxNumberOfEnemies = 9;
   private int num0fEnemies = 1;
   private int turn = 1;
-  //private final BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
   Scanner sc = new Scanner(System.in);
 
 
@@ -121,10 +120,10 @@ public class Game {
     } else {
       num0fEnemies = e1;
     }
-    enemies(num0fEnemies);
+    enemiess(num0fEnemies);
   }
 
-  public void enemies(int ne) throws InvalidStatValueException {
+  public void enemiess(int ne) throws InvalidStatValueException {
     for (int i = 1; i < ne + 1; i++) {
       Random random = new Random();
       int ranWeight = random.nextInt(10, 30);
