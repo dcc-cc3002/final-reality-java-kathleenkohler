@@ -2,31 +2,53 @@ package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * A class that holds all the information of a single enemy of the game.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author ~Kathleen Kohler~
  */
 public class Enemy extends AbstractCharacter {
 
   private final int weight;
 
+  private final int damage;
+
+  private State state = new Normal(0);
+
   /**
    * Creates a new enemy with a name, a weight and the queue with the characters ready to
    * play.
    */
-  public Enemy(@NotNull final String name, final int weight, int maxHp, int defense,
-      @NotNull final BlockingQueue<GameCharacter> turnsQueue)
+  public Enemy(@NotNull final String name, final int weight, int maxHp, int defense, int damage,
+               @NotNull final BlockingQueue<GameCharacter> turnsQueue)
       throws InvalidStatValueException {
     super(name, maxHp, defense, turnsQueue);
     Require.statValueAtLeast(1, weight, "Weight");
     this.weight = weight;
+    this.damage = damage;
   }
+
+
+  /**
+   * Sets a scheduled executor to make this character (thread) wait for {@code speed / 10}
+   * seconds before adding the character to the queue.
+   */
+  public void waitTurn() {
+    scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
+    scheduledExecutor.schedule(
+            /* command = */ this::addToQueue,
+            /* delay = */ this.getWeight() / 10,
+            /* unit = */ TimeUnit.SECONDS);
+  }
+
 
   /**
    * Returns the weight of this enemy.
@@ -34,6 +56,20 @@ public class Enemy extends AbstractCharacter {
   public int getWeight() {
     return weight;
   }
+
+  /**
+   * Returns enemy damage.
+   */
+  public int getDamage() {
+    return damage;
+  }
+
+  @Override
+  public String toString() {
+    return "Enemy{name='%s', weight=%d, currentHp=%d, defense=%d, damage=%d}"
+            .formatted(name, weight, currentHp, defense, damage);
+  } //agregar state(?
+
 
   @Override
   public boolean equals(final Object o) {
@@ -47,11 +83,47 @@ public class Enemy extends AbstractCharacter {
         && name.equals(enemy.name)
         && weight == enemy.weight
         && maxHp == enemy.maxHp
-        && defense == enemy.defense;
+        && defense == enemy.defense
+        && damage == enemy.damage;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(Enemy.class, name, weight, maxHp, defense);
+    return Objects.hash(Enemy.class, name, weight, maxHp, defense, damage);
   }
+
+  /**
+   * Attack a player.
+   */
+  public void attack(AbstractPlayerCharacter character) throws InvalidStatValueException {
+    if (this.getDamage() - character.getDefense() > 0) {
+      if (character.getCurrentHp() - (this.getDamage() - character.getDefense()) > 0) {
+        character.setCurrentHp(character.getCurrentHp() - (this.getDamage()
+              - character.getDefense()));
+      } else {
+        character.setCurrentHp(0);
+      }
+    }
+  }
+
+  public State getState() {
+    return this.state;
+  }
+
+  public boolean isPoisoned() {
+    return state.isPoisoned();
+  }
+
+  public boolean isBurned() {
+    return state.isBurned();
+  }
+
+  public boolean isParalyzed() {
+    return state.isParalyzed();
+  }
+
+  public void setState(State s) {
+    this.state = s;
+  }
+
 }
