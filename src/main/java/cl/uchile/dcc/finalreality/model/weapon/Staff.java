@@ -10,7 +10,6 @@ import cl.uchile.dcc.finalreality.model.character.player.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.WhiteMage;
 import java.util.Objects;
 import java.util.Random;
-
 import org.jetbrains.annotations.NotNull;
 
 /**

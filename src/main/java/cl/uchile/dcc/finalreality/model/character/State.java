@@ -1,5 +1,8 @@
 package cl.uchile.dcc.finalreality.model.character;
 
+/**
+ * A class that holds all the information of states.
+ */
 public abstract class State {
   protected int magiDam;
 

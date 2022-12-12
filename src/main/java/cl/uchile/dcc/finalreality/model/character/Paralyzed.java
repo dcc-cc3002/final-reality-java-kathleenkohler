@@ -1,5 +1,8 @@
 package cl.uchile.dcc.finalreality.model.character;
 
+/**
+ * A class that holds all the information of the paralyzed state.
+ */
 public class Paralyzed extends State {
 
 
