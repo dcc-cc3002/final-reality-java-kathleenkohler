@@ -12,6 +12,9 @@ import org.junit.Test;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 public class GameTest {
   Game game = new Game();
@@ -34,6 +37,30 @@ public class GameTest {
     assertEquals(3, game.enemies.size());
   }
   //swap turn
+  @Test
+  public void testSwapTurn() {
+    assertEquals(1, game.turn);
+    game.swapTurn();
+    assertNotEquals(1, game.turn);
+  }
 
-  //game over
+  @Test
+  public void testGameOverYouWon() throws InvalidStatValueException {
+    game.enemiess(1);
+    BlackMage blackMage1 = new BlackMage("BlackMage1", 70, 15, 40, queue);
+    game.playerCharacterInventory.add(blackMage1);
+    assertFalse(game.gameOver());
+    game.enemies.get(0).setCurrentHp(0);
+    assertTrue(game.gameOver());
+  }
+
+  @Test
+  public void testGameOverEnemyWon() throws InvalidStatValueException {
+    game.enemiess(1);
+    BlackMage blackMage1 = new BlackMage("BlackMage1", 70, 15, 40, queue);
+    game.playerCharacterInventory.add(blackMage1);
+    assertFalse(game.gameOver());
+    game.playerCharacterInventory.get(0).setCurrentHp(0);
+    assertTrue(game.gameOver());
+  }
 }

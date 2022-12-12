@@ -18,19 +18,24 @@ import java.util.Scanner;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * Class to define the game controller.
+ */
 public class Game {
 
   private Player player;
   public ArrayList<AbstractPlayerCharacter> characterInventory = new ArrayList<>();
-  private ArrayList<AbstractPlayerCharacter> playerCharacterInventory = new ArrayList<>();
+  public ArrayList<AbstractPlayerCharacter> playerCharacterInventory = new ArrayList<>();
   public ArrayList<Enemy> enemies = new ArrayList<>();
   private BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
   private final int maxNumberOfEnemies = 9;
   private int num0fEnemies = 1;
-  private int turn = 1;
+  public int turn = 1;
   Scanner sc = new Scanner(System.in);
 
-
+  /**
+   * Set up a character inventory.
+   */
   public void setChracterInventory() throws InvalidStatValueException {
     BlackMage blackMage1 = new BlackMage("BlackMage1", 70, 15, 40, queue);
     characterInventory.add(blackMage1);
@@ -53,6 +58,10 @@ public class Game {
     Engineer engineer2 = new Engineer("Engineer2", 100, 15, queue);
     characterInventory.add(engineer2);
   }
+
+  /*
+
+
 
   public void startGame() throws IOException, InvalidStatValueException, InvalidEquippedWeapon {
     setChracterInventory();
@@ -123,6 +132,11 @@ public class Game {
     enemiess(num0fEnemies);
   }
 
+   */
+
+  /**
+   * Create the requested number of enemies.
+   */
   public void enemiess(int ne) throws InvalidStatValueException {
     for (int i = 1; i < ne + 1; i++) {
       Random random = new Random();
@@ -133,7 +147,7 @@ public class Game {
       enemies.add(new Enemy("Enemy" + i, ranWeight, ranHp, ranDefense, ranDamage, queue));
     }
   }
-
+  /*
   public boolean loop() throws IOException, InvalidStatValueException, InvalidEquippedWeapon {
     boolean a = false;
     while (!a) {
@@ -152,12 +166,16 @@ public class Game {
     }
     return a;
     // va a devolver true si el juego se acaba
-  }
+  }}*/
 
-  private void swapTurn() {
+  /**
+   * Change current turn.
+   */
+  public void swapTurn() {
     turn = (turn == 1) ? 0 : 1;
   }
 
+  /*
   public void gameState() {
     System.out.print("Current state of the game:\n");
     System.out.print("\n");
@@ -173,6 +191,8 @@ public class Game {
     }
   }
 
+   */
+  /*
   public void enemyTurn() throws InvalidStatValueException {
     Random random = new Random();
     int ranInt = random.nextInt(0, playerCharacterInventory.size() - 1);
@@ -219,6 +239,11 @@ public class Game {
       enemyTurn();
     }
   }
+*/
+
+  /*
+
+
 
   public void playerTurn() throws IOException, InvalidStatValueException, InvalidEquippedWeapon {
     String a1;
@@ -336,7 +361,11 @@ public class Game {
       }
     }
   }
+  */
 
+  /**
+   * Function that checks if the game is over and who won.
+   */
   public boolean gameOver() {
     boolean livingEnemies = false;
     for (int  i = 0; i < enemies.size(); i++) {

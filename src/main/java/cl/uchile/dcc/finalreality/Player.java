@@ -10,6 +10,9 @@ import cl.uchile.dcc.finalreality.model.weapon.Sword;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.ArrayList;
 
+/**
+ * Class that holds player information.
+ */
 public class Player {
 
   private final AbstractPlayerCharacter character1;
@@ -18,6 +21,9 @@ public class Player {
   private final AbstractPlayerCharacter character4;
   public final ArrayList<Weapon> inventory = new ArrayList<>();
 
+  /**
+   * Player constructor.
+   */
   public Player(AbstractPlayerCharacter character1, AbstractPlayerCharacter character2,
                 AbstractPlayerCharacter character3, AbstractPlayerCharacter character4) {
     this.character1 = character1;
@@ -26,7 +32,9 @@ public class Player {
     this.character4 = character4;
   }
 
-
+  /**
+   * Set up a weapon inventory.
+   */
   public void setInventory() throws InvalidStatValueException {
     Axe axe = new Axe("Axe", 30, 30);
     inventory.add(axe);
